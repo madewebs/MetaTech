@@ -117,6 +117,7 @@ export default function Home() {
               className="object-cover brightness-50"
               priority={index === 0}
               sizes="100vw"
+              loading="lazy"
               unoptimized
             />
             <div className="relative h-full w-full flex justify-center p-8 md:px-22 text-[#fefefe]">
