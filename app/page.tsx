@@ -20,8 +20,6 @@ export default function Home() {
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
   const prevIndexRef = useRef(0);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const fillRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import bgcon from "@/public/bgcon.svg";
 import Image from "next/image";
 
@@ -56,7 +55,7 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto leading-tight">
-            Have a question or want to discuss your automation needs? We'd love to hear from you.
+            Have a question or want to discuss your automation needs? We&apos;d love to hear from you.
           </p>
         </div>
 
@@ -65,7 +64,7 @@ export default function Contact() {
           <div className="space-y-6">
             <div>
               <h3 className="text-3xl font-bold tracking-tight text-white mb-4">
-                Let's Build the Future Together
+                Let&apos;s Build the Future Together
               </h3>
               <p className="text-md text-gray-200 leading-snug">
                 Ready to transform your business with cutting-edge automation solutions? 
