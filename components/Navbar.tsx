@@ -13,11 +13,11 @@ export default function Navbar() {
   const listRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Service", href: "/service" },
-    { name: "Projects", href: "/contact" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Home", href: "" },
+    { name: "About", href: "/#" },
+    { name: "Service", href: "/#" },
+    { name: "Projects", href: "/#" },
+    { name: "Contact Us", href: "/#" },
   ];
 
   const handleLinkClick = () => {

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import Navbar from "@/components/Navbar";
+import About from "@/components/About";
+
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -12,17 +14,19 @@ export default function Home() {
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
   const prevIndexRef = useRef(0);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const fillRef = useRef<HTMLDivElement>(null);
 
   const images = [
     {
       src: "one.webp",
-      text: "Automated Production Lines",
-      subtext: "End-to-end controls for precision, safety, and uptime.",
+      text: "Automated Production Lines.",
+      subtext: "End-to-end controls for precision, safety, and uptime. Seamless integration of machinery with real-time monitoring to maximize efficiency.",
     },
     {
       src: "three.webp",
-      text: "Cobots and Robotics",
-      subtext: "Collaborative robots integrated with vision and safety.",
+      text: "Cobots and Robotics.",
+      subtext: "Collaborative robots integrated with vision and safety. Advanced cobots work alongside humans with AI-driven vision and safety protocols.",
     },
   ];
 
@@ -30,7 +34,7 @@ export default function Home() {
     if (autoplayRef.current) clearInterval(autoplayRef.current);
     autoplayRef.current = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 5000);
   }, [images.length]);
 
   useEffect(() => {
@@ -47,13 +51,13 @@ export default function Home() {
   const next = () => {
     goTo(currentImage + 1);
     // Pause autoplay briefly to let manual transition finish smoothly
-    setTimeout(() => startAutoplay(), 1200);
+    setTimeout(() => startAutoplay(), 1000);
   };
 
   const prev = () => {
     goTo(currentImage - 1);
     // Pause autoplay briefly to let manual transition finish smoothly
-    setTimeout(() => startAutoplay(), 1200);
+    setTimeout(() => startAutoplay(), 1000);
   };
 
   // Animate image and text simultaneously
@@ -69,26 +73,41 @@ export default function Home() {
 
     tlRef.current?.kill();
     const ctx = gsap.context(() => {
+      // Set z-index for all slides
+      slideRefs.current.forEach((slide, idx) => {
+        if (!slide) return;
+        if (idx === curr) {
+          gsap.set(slide, { zIndex: 2, opacity: 0 });
+        } else if (idx === prev) {
+          gsap.set(slide, { zIndex: 1, opacity: 1 });
+        } else {
+          gsap.set(slide, { zIndex: 0, opacity: 0 });
+        }
+      });
+
       const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
-      // Prepare current slide and text
-      if (currSlide) gsap.set(currSlide, { opacity: 0, scale: 1.02 });
+      // Prepare current text
       if (currChildren.length) gsap.set(currChildren, { y: 12, opacity: 0 });
 
-      // Animate out previous (if different)
-      if (prev !== curr && prevSlide) {
-        tl.to(prevSlide, { opacity: 0, scale: 1.01, duration: 0.8 }, 0);
-      }
+      // Animate out previous text (if different)
       if (prev !== curr && prevChildren.length) {
-        tl.to(prevChildren, { y: -8, opacity: 0, duration: 0.6, stagger: 0.05 }, 0);
+        tl.to(prevChildren, { y: -8, opacity: 0, duration: 0.3, stagger: 0.03 }, 0);
       }
 
-      // Animate in current (after out finishes for smoother loop)
+      // Fade in current image smoothly
       if (currSlide) {
-        tl.to(currSlide, { opacity: 1, scale: 1, duration: 1.2 }, 0.4);
+        tl.to(currSlide, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0.1);
       }
+
+      // Hide previous slide after fade in completes
+      if (prev !== curr && prevSlide) {
+        tl.set(prevSlide, { opacity: 0, zIndex: 0 }, 0.6);
+      }
+
+      // Animate in current text
       if (currChildren.length) {
-        tl.to(currChildren, { y: 0, opacity: 1, duration: 1.2, stagger: 0.08 }, 0.4);
+        tl.to(currChildren, { y: 0, opacity: 1, duration: 0.5, stagger: 0.04, ease: "power1.out" }, 0.3);
       }
 
       tlRef.current = tl;
@@ -100,7 +119,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="relative min-h-[73vh] md:min-h-[75vh] w-full overflow-hidden font-light z-100">
+      <div className="relative min-h-[73vh] md:min-h-[76vh] w-full overflow-hidden font-light z-100">
         {/* Slides */}
         {images.map((item, index) => (
           <div
@@ -117,26 +136,25 @@ export default function Home() {
               className="object-cover brightness-50"
               priority={index === 0}
               sizes="100vw"
-              loading="lazy"
               unoptimized
             />
             <div className="relative h-full w-full flex justify-center p-8 md:px-22 text-[#fefefe]">
-              <div className="w-full md:max-w-screen flex items-center md:px-16">
+              <div className="w-full md:max-w-screen flex items-center md:px-10">
                 <div
-                  className="tracking-tighter"
+                  className=""
                   ref={(el) => {
                     if (el) textRefs.current[index] = el;
                   }}
                 >
-                  <h1 className="text-4xl font-semibold md:text-5xl lg:text-7xl">
+                  <h1 className="text-4xl font-semibold md:text-5xl lg:text-6xl mb-4 tracking-tight">
                     {item.text}
                   </h1>
                   {item.subtext && (
-                    <p className="text-lg md:text-xl">
+                    <p className="text-md md:text-xl tracking-wider">
                       {item.subtext}
                     </p>
                   )}
-                  <button className="border p-2 text-sm mt-3 tracking-normal">
+                  <button className="border px-8 py-3 text-[12px] mt-3 tracking-normal relative overflow-hidden group">
                     KNOW MORE
                   </button>
                 </div>
@@ -151,17 +169,17 @@ export default function Home() {
             type="button"
             onClick={prev}
             aria-label="Previous slide"
-            className="h-10 w-10 flex items-center justify-center rounded-md border opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-out"
+            className="h-8 w-8 flex items-center justify-center rounded-full opacity-80 hover:opacity-100 hover:scale-110 hover:bg-blue-950 transition-all duration-300 ease-out"
           >
-            <span aria-hidden>&lt;</span>
+            <span aria-hidden>←</span>
           </button>
           <button
             type="button"
             onClick={next}
             aria-label="Next slide"
-            className="h-10 w-10 flex items-center justify-center rounded-md border opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-out"
+            className="h-8 w-8 flex items-center justify-center rounded-full opacity-80 hover:opacity-100 hover:scale-110 hover:bg-blue-950 transition-all duration-300 ease-out"
           >
-            <span aria-hidden>&gt;</span>
+            <span aria-hidden>→</span>
           </button>
         </div>
 
@@ -186,7 +204,6 @@ export default function Home() {
           })}
         </div>
       </div>
-      <div>rj</div>
     </>
   );
 }
