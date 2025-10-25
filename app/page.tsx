@@ -16,6 +16,8 @@ export default function Home() {
   const prevIndexRef = useRef(0);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   const images = [
     {
@@ -50,14 +52,31 @@ export default function Home() {
 
   const next = () => {
     goTo(currentImage + 1);
-    // Pause autoplay briefly to let manual transition finish smoothly
     setTimeout(() => startAutoplay(), 1000);
   };
 
   const prev = () => {
     goTo(currentImage - 1);
-    // Pause autoplay briefly to let manual transition finish smoothly
     setTimeout(() => startAutoplay(), 1000);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current - touchEndX.current > 50) {
+      // Swipe left - next
+      next();
+    }
+    if (touchStartX.current - touchEndX.current < -50) {
+      // Swipe right - prev
+      prev();
+    }
   };
 
   // Animate image and text simultaneously
@@ -119,7 +138,12 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="relative min-h-[75vh] md:min-h-[78vh] w-full overflow-hidden font-light z-100">
+      <div 
+        className="relative min-h-[75vh] md:min-h-[78vh] w-full overflow-hidden font-light z-100"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {/* Slides */}
         {images.map((item, index) => (
           <div
@@ -204,6 +228,7 @@ export default function Home() {
           })}
         </div>
       </div>
+      <About />
     </>
   );
 }
