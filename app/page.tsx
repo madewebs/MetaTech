@@ -119,7 +119,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="relative min-h-[73vh] md:min-h-[76vh] w-full overflow-hidden font-light z-100">
+      <div className="relative min-h-[75vh] md:min-h-[78vh] w-full overflow-hidden font-light z-100">
         {/* Slides */}
         {images.map((item, index) => (
           <div

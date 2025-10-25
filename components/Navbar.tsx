@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { TfiClose } from "react-icons/tfi";
 import { gsap } from "gsap";
 
@@ -48,15 +48,15 @@ export default function Navbar() {
     <nav className="z-50 backdrop-blur-xl border-b border-gray-200/30 ">
       {/* glassy without color styles */}
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex items-center justify-between h-22 md:h-26">
+        <div className="flex items-center justify-between h-20 md:h-26">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center text-xl font-medium uppercase tracking-wider">
               <Image
                 alt="Meta Tech Automation Logo"
                 src="/logo.webp"
-                width={110}
-                height={110}
+                width={115}
+                height={115}
               />
               <span className="hidden md:inline-block font-semibold tracking-tighter text-[#012157]">METATECH <span className="text-[#0196c7]">A</span>UTOMATION</span>
             </Link>
@@ -88,7 +88,7 @@ export default function Navbar() {
               {isOpen ? (
                 <TfiClose size={22} aria-hidden />
               ) : (
-                <RxHamburgerMenu size={22} aria-hidden />
+                <GiHamburgerMenu  size={22} aria-hidden />
               )}
             </button>
           </div>
