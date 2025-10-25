@@ -5,6 +5,12 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
+import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
+import Services from "@/components/Services";
+
+
+
 
 
 export default function Home() {
@@ -228,7 +234,10 @@ export default function Home() {
           })}
         </div>
       </div>
-      <About />
+      {/* <About /> */}
+      <Services/>
+      <Contact/>
+      <Footer/>
     </>
   );
 }

@@ -137,7 +137,7 @@ export default function Navbar() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20 md:h-26">
+        <div className="flex items-center justify-between h-18 md:h-26">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center text-xl font-medium uppercase tracking-wider">
