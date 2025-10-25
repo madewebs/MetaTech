@@ -88,7 +88,7 @@ export default function Navbar() {
               {isOpen ? (
                 <TfiClose size={22} aria-hidden />
               ) : (
-                <GiHamburgerMenu  size={22} aria-hidden />
+                <GiHamburgerMenu  size={25} aria-hidden />
               )}
             </button>
           </div>
