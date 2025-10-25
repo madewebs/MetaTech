@@ -139,7 +139,7 @@ export default function Home() {
     <>
       <Navbar />
       <div 
-        className="relative min-h-[75vh] md:min-h-[78vh] w-full overflow-hidden font-light z-100"
+        className="relative min-h-[85vh] md:min-h-[90vh] w-full overflow-hidden font-light z-100"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -162,7 +162,7 @@ export default function Home() {
               sizes="100vw"
               unoptimized
             />
-            <div className="relative h-full w-full flex justify-center p-8 md:px-22 text-[#fefefe]">
+            <div className="relative h-full w-full flex justify-center p-6 md:px-22 text-[#fefefe]">
               <div className="w-full md:max-w-screen flex items-center md:px-10">
                 <div
                   className=""
