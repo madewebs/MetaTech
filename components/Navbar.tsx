@@ -39,10 +39,9 @@ export default function Navbar() {
           // Slide down animation
           gsap.fromTo(
             navRef.current,
-            { y: -100, backgroundColor: "rgba(255, 255, 255, 0.05)" },
+            { y: -100 },
             {
               y: 0,
-              backgroundColor: "rgba(255, 255, 255, 1)",
               duration: 0.5,
               ease: "power2.out",
             }
@@ -52,10 +51,9 @@ export default function Navbar() {
         if (isScrolled) {
           setIsScrolled(false);
           
-          // Reset to transparent
+          // Reset
           gsap.to(navRef.current, {
             y: 0,
-            backgroundColor: "rgba(255, 255, 255, 0.05)",
             duration: 0.3,
             ease: "power2.out",
           });
@@ -129,29 +127,16 @@ export default function Navbar() {
       ref={navRef}
       className={`${
         isScrolled ? "fixed" : "absolute"
-      } top-0 left-0 right-0 z-200 border-b ${
-        isScrolled ? "border-gray-200 shadow-md" : "border-white/10 backdrop-blur-xsm"
+      } top-0 left-0 right-0 z-200 ${
+        isScrolled ? "shadow-md bg-[#151515]" : "backdrop-blur-xsm bg-black/20"
       }`}
-      style={{
-        backgroundColor: isScrolled ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0.05)"
-      }}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-18 md:h-26">
+        <div className="flex items-center justify-between h-18 md:h-22">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="">
             <Link href="/" className="flex items-center text-xl font-medium uppercase tracking-wider">
-              <Image
-                alt="Meta Tech Automation Logo"
-                src="/logo.webp"
-                width={115}
-                height={115}
-              />
-              <span
-                className={`hidden md:inline-block font-semibold tracking-tighter transition-all duration-300 ${
-                  isScrolled ? "text-gray-900" : "text-white drop-shadow-lg"
-                }`}
-              >
+              <span className="inline-block font-semibold tracking-tighter transition-all duration-300">
                 METATECH <span className="text-[#0196c7]">A</span>UTOMATION
               </span>
             </Link>
@@ -164,11 +149,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`font-medium transition-all duration-300 ${
-                    isScrolled
-                      ? "text-gray-900 hover:text-[#0196c7]"
-                      : "text-white hover:text-gray-300 drop-shadow-md"
-                  }`}
+                  className="font-medium transition-all duration-300"
                 >
                   {link.name}
                 </Link>
@@ -180,16 +161,14 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`inline-flex h-10 w-10 items-center justify-center rounded-md focus:outline-none leading-none transition-all duration-300 ${
-                isScrolled ? "text-gray-900" : "text-white drop-shadow-lg"
-              }`}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md focus:outline-none leading-none transition-all duration-300"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
               {isOpen ? (
                 <TfiClose size={22} aria-hidden />
               ) : (
-                <GiHamburgerMenu size={25} aria-hidden />
+                <GiHamburgerMenu size={22} aria-hidden className="font-extrabold" />
               )}
             </button>
           </div>
@@ -198,11 +177,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden backdrop-blur-sm border-t transition-colors duration-300 ${
-          isScrolled
-            ? "bg-white/95 border-gray-200"
-            : "bg-black/20 border-white/10"
-        }`}
+        className="md:hidden backdrop-blur-sm border-t transition-colors duration-300"
         ref={menuRef}
         style={{ display: "none", height: 0, overflow: "hidden" }}
         aria-hidden={!isOpen}
@@ -213,15 +188,11 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`flex items-center justify-between px-3 py-5 font-medium uppercase tracking-wider text-sm transition-all duration-300 ${
-                  isScrolled
-                    ? "text-gray-900 border-b border-gray-200 hover:bg-gray-100"
-                    : "text-white border-b border-white/10 hover:bg-white/5"
-                }`}
+                className="flex items-center justify-between px-3 py-5 font-medium uppercase tracking-wider text-sm transition-all duration-300 border-b"
                 onClick={handleLinkClick}
               >
                 <span>{link.name}</span>
-                <span aria-hidden="true" className={`ml-2 ${isScrolled ? "text-gray-400" : "text-gray-300"}`}>
+                <span aria-hidden="true" className="ml-2">
                   {">"}
                 </span>
               </Link>

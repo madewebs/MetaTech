@@ -33,7 +33,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer>
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
@@ -47,7 +47,7 @@ export default function Footer() {
                 height={100}
               />
             </Link>
-            <h3 className="text-white font-semibold text-lg tracking-tight">
+            <h3 className="font-semibold text-lg tracking-tight">
               METATECH <span className="text-[#0196c7]">A</span>UTOMATION
             </h3>
             <p className="text-sm leading-relaxed">
@@ -61,7 +61,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-800"
+                  className="w-9 h-9 flex items-center justify-center rounded-full"
                 >
                   <social.icon size={16} />
                 </a>
@@ -71,7 +71,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -88,7 +88,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-4">Our Services</h4>
+            <h4 className="font-semibold text-lg mb-4">Our Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service.name}>
@@ -105,7 +105,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-4">Contact Us</h4>
+            <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MdLocationOn className="text-[#0196c7] mt-1 flex-shrink-0" size={20} />
@@ -137,28 +137,25 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
+      <div className="border-t">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-gray-400">
+            <p className="text-sm">
               © {currentYear} MetaTech Automation. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <Link
                 href="/#"
-                className="text-gray-400"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/#"
-                className="text-gray-400"
               >
                 Terms of Service
               </Link>
               <Link
                 href="/#"
-                className="text-gray-400"
               >
                 Sitemap
               </Link>

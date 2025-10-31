@@ -4,14 +4,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import Navbar from "@/components/Navbar";
-import About from "@/components/About";
 import Footer from "@/components/Footer";
-import Contact from "@/components/Contact";
-import Services from "@/components/Services";
-
-
-
-
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -143,7 +136,7 @@ export default function Home() {
     <>
       <Navbar />
       <div 
-        className="relative min-h-[85vh] md:min-h-[90vh] w-full overflow-hidden font-light z-100"
+        className="relative min-h-screen w-full overflow-hidden font-light z-100"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -166,7 +159,7 @@ export default function Home() {
               sizes="100vw"
               unoptimized
             />
-            <div className="relative h-full w-full flex justify-center p-6 md:px-22 text-[#fefefe]">
+            <div className="relative h-full w-full flex justify-center p-6 md:px-22">
               <div className="w-full md:max-w-screen flex items-center md:px-10">
                 <div
                   className=""
@@ -192,12 +185,12 @@ export default function Home() {
         ))}
 
         {/* Bottom-left nav arrows */}
-        <div className="absolute bottom-5 left-5 z-10 flex items-center gap-2 text-[#fefefe]">
+        <div className="absolute bottom-5 left-5 z-10 flex items-center gap-2">
           <button
             type="button"
             onClick={prev}
             aria-label="Previous slide"
-            className="h-8 w-8 flex items-center justify-center rounded-full opacity-80 hover:opacity-100 hover:scale-110 hover:bg-blue-950 transition-all duration-300 ease-out"
+            className="h-8 w-8 flex items-center justify-center rounded-full opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-out"
           >
             <span aria-hidden>←</span>
           </button>
@@ -205,14 +198,14 @@ export default function Home() {
             type="button"
             onClick={next}
             aria-label="Next slide"
-            className="h-8 w-8 flex items-center justify-center rounded-full opacity-80 hover:opacity-100 hover:scale-110 hover:bg-blue-950 transition-all duration-300 ease-out"
+            className="h-8 w-8 flex items-center justify-center rounded-full opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-out"
           >
             <span aria-hidden>→</span>
           </button>
         </div>
 
         {/* Bottom-center indicators */}
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 text-[#fefefe]">
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
           {images.map((_, i) => {
             const active = i === currentImage;
             return (
@@ -232,9 +225,6 @@ export default function Home() {
           })}
         </div>
       </div>
-      {/* <About /> */}
-      <Services/>
-      <Contact/>
       <Footer/>
     </>
   );
