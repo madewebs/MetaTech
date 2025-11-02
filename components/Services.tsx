@@ -18,7 +18,6 @@ function Services() {
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const captionRef = useRef<HTMLParagraphElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const buttonsRef = useRef<HTMLDivElement>(null);
 
   const services = [
@@ -100,25 +99,6 @@ function Services() {
           start: "top 85%",
           once: true,
         },
-      });
-
-      // Cards animation with stagger
-      cardsRef.current.forEach((card, index) => {
-        if (card) {
-          gsap.from(card, {
-            opacity: 0,
-            y: 50,
-            scale: 0.95,
-            duration: 0.7,
-            delay: index * 0.15,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%",
-              once: true,
-            },
-          });
-        }
       });
 
       // Buttons animation
@@ -230,9 +210,6 @@ function Services() {
               {services.map((service, index) => (
                 <div
                   key={service.id}
-                  ref={(el) => {
-                    cardsRef.current[index] = el;
-                  }}
                   className="flex-shrink-0 w-[85%] md:w-[calc(33.333%-16px)]"
                 >
                   <div className="bg-[#151515] rounded-sm overflow-hidden duration-300 cursor-pointer group">
