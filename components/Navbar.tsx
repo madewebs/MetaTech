@@ -137,7 +137,7 @@ export default function Navbar() {
           <div className="">
             <Link href="/" className="flex items-center text-xl font-medium uppercase tracking-wider">
               <span className="inline-block font-semibold tracking-tighter transition-all duration-300">
-                METATECH <span className="text-[#0196c7]">A</span>UTOMATION
+                METATECH AUTOMATION
               </span>
             </Link>
           </div>

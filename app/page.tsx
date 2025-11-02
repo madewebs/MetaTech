@@ -5,6 +5,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Services from "@/components/Services";
+import Sponsers from "@/components/Sponsers";
+
+
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -136,7 +140,7 @@ export default function Home() {
     <>
       <Navbar />
       <div 
-        className="relative min-h-screen w-full overflow-hidden font-light z-100"
+        className="relative min-h-[85vh] w-full overflow-hidden font-light z-100"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -154,13 +158,13 @@ export default function Home() {
               src={item.src}
               alt={`Hero ${index + 1}`}
               fill
-              className="object-cover brightness-50"
+              className="object-cover brightness-40"
               priority={index === 0}
               sizes="100vw"
               unoptimized
             />
             <div className="relative h-full w-full flex justify-center p-6 md:px-22">
-              <div className="w-full md:max-w-screen flex items-center md:px-10">
+              <div className="w-full md:max-w-screen flex items-center md:px-16">
                 <div
                   className=""
                   ref={(el) => {
@@ -171,7 +175,7 @@ export default function Home() {
                     {item.text}
                   </h1>
                   {item.subtext && (
-                    <p className="text-md md:text-xl tracking-wider">
+                    <p className="text-md md:text-lg tracking-wider">
                       {item.subtext}
                     </p>
                   )}
@@ -225,6 +229,8 @@ export default function Home() {
           })}
         </div>
       </div>
+      <Services/>
+      <Sponsers/>
       <Footer/>
     </>
   );
