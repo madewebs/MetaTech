@@ -217,7 +217,7 @@ function Services() {
                       ref={(el) => {
                         imageRefs.current[index] = el;
                       }}
-                      className="relative h-[65vh] overflow-hidden"
+                      className="relative h-[500px] w-full overflow-hidden"
                     >
                       <Image
                         src={service.image}
