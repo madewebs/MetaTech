@@ -1,10 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState } from 'react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -14,70 +10,6 @@ export default function Contact() {
     company: '',
     message: '',
   });
-
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const captionRef = useRef<HTMLParagraphElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-  const infoRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Heading animation
-      gsap.from(headingRef.current, {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          once: true,
-        },
-      });
-
-      // Caption animation
-      gsap.from(captionRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: captionRef.current,
-          start: "top 85%",
-          once: true,
-        },
-      });
-
-      // Form animation
-      gsap.from(formRef.current, {
-        opacity: 0,
-        x: -50,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: "top 80%",
-          once: true,
-        },
-      });
-
-      // Info animation
-      gsap.from(infoRef.current, {
-        opacity: 0,
-        x: 50,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: infoRef.current,
-          start: "top 80%",
-          once: true,
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -94,7 +26,7 @@ export default function Contact() {
     
     // Replace with your WhatsApp number (include country code without + or spaces)
     // Example: For +1 555 123 4567, use 15551234567
-    const whatsappNumber = '+918075595509'; // Replace with your actual number
+    const whatsappNumber = '918075595509'; // Replace with your actual number
     
     // Open WhatsApp with pre-filled message
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
@@ -129,18 +61,18 @@ export default function Contact() {
         <div className='mx-auto max-w-7xl px-6'>
           {/* Header Section */}
           <div className='mb-16'>
-            <h2 ref={headingRef} className='text-4xl md:text-5xl font-medium mb-4'>
+            <h2 className='text-4xl md:text-5xl font-medium mb-4'>
               Get In Touch
             </h2>
-            <p ref={captionRef} className='text-[#d8d8d8]/70 text-md md:text-xl'>
-              Let's discuss how we can transform your automation needs into reality.
+            <p className='text-[#d8d8d8]/70 text-md md:text-xl'>
+              Let&apos;s discuss how we can transform your automation needs into reality.
             </p>
           </div>
 
           {/* Main Content Grid */}
           <div className='grid md:grid-cols-2 gap-12'>
             {/* Form Section */}
-            <form ref={formRef} onSubmit={handleSubmit} className='space-y-6'>
+            <form onSubmit={handleSubmit} className='space-y-6'>
               <div>
                 <label htmlFor='name' className='block text-sm font-medium mb-2'>
                   Full Name *
@@ -228,7 +160,7 @@ export default function Contact() {
             </form>
 
             {/* Info Section */}
-            <div ref={infoRef} className='space-y-4'>
+            <div className='space-y-4'>
               <div className='bg-[#d8d8d8]/5 border border-[#d8d8d8]/10 p-8 rounded-sm'>
                 <h3 className='text-xl font-semibold mb-4'>Contact Information</h3>
                 <div className='space-y-4'>
