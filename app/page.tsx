@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Services from "@/components/Services";
 import Sponsers from "@/components/Sponsers";
+import About from "@/components/About";
+import Contact from "@/components/Contact";
 
 
 
@@ -229,8 +231,10 @@ export default function Home() {
           })}
         </div>
       </div>
+      <About/>
       <Services/>
       <Sponsers/>
+      <Contact/>
       <Footer/>
     </>
   );

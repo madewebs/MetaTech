@@ -143,10 +143,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t-1 text-2sm">
+        <div className="border-t-1 text-sm">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-              <p className="text-sm">
+              <p className="text-sm text-justify">
                 © {currentYear} MetaTech Automation. All rights reserved.
               </p>
               <div className="flex space-x-4 text-sm">
