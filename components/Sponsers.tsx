@@ -11,7 +11,6 @@ export default function Sponsors() {
   const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const captionRef = useRef<HTMLParagraphElement>(null);
-  const logosRef = useRef<(HTMLDivElement | null)[]>([]);
   const statsRef = useRef<HTMLDivElement>(null);
   
   const [counts, setCounts] = useState({
@@ -60,25 +59,6 @@ export default function Sponsors() {
           start: "top 85%",
           once: true,
         },
-      });
-
-      // Logo animations with stagger
-      logosRef.current.forEach((logo, index) => {
-        if (logo) {
-          gsap.from(logo, {
-            opacity: 0,
-            y: 30,
-            scale: 0.9,
-            duration: 0.6,
-            delay: index * 0.1,
-            ease: "back.out(1.2)",
-            scrollTrigger: {
-              trigger: logo,
-              start: "top 90%",
-              once: true,
-            },
-          });
-        }
       });
 
       // Counter animations
@@ -146,14 +126,11 @@ export default function Sponsors() {
           </p>
         </div>
 
-        {/* Logos Grid */}
+        {/* Logos Grid (static display, no GSAP animation) */}
         <div className="grid grid-cols-4 md:grid-cols-8 gap-6 md:gap-6">
-          {clients.map((client, index) => (
+          {clients.map((client) => (
             <div
               key={client.id}
-              ref={(el) => {
-                logosRef.current[index] = el;
-              }}
               className="group relative flex items-center justify-center cursor-pointer"
             >
               <div className="relative w-24 h-24 md:w-32 md:h-32 transition-transform duration-300 group-hover:scale-110">

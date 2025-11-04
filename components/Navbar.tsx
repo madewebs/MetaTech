@@ -14,6 +14,16 @@ export default function Navbar() {
   const listRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const iconHamburgerRef = useRef<HTMLSpanElement>(null);
+  const iconCloseRef = useRef<HTMLSpanElement>(null);
+
+  // store original body/html styles so we can restore them exactly
+  const originalBodyStyles = useRef<{
+    overflow?: string;
+    htmlOverflow?: string;
+    paddingRight?: string;
+  } | null>(null);
 
   const navLinks = [
     { name: "Home", href: "" },
@@ -27,16 +37,13 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
-  // Handle scroll with animation
   useEffect(() => {
     const handleScroll = () => {
-      const landingPageHeight = window.innerHeight * 0.50;
-      
+      const landingPageHeight = window.innerHeight * 0.5;
+
       if (window.scrollY > landingPageHeight) {
         if (!isScrolled) {
           setIsScrolled(true);
-          
-          // Slide down animation
           gsap.fromTo(
             navRef.current,
             { y: -100 },
@@ -50,8 +57,6 @@ export default function Navbar() {
       } else {
         if (isScrolled) {
           setIsScrolled(false);
-          
-          // Reset
           gsap.to(navRef.current, {
             y: 0,
             duration: 0.3,
@@ -65,60 +70,130 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isScrolled]);
 
-  // GSAP open/close animation
+  // compute top offset and remaining height
+  const computeLayout = () => {
+    const menu = menuRef.current;
+    if (!menu || !navRef.current) return { top: 0, height: 0 };
+    const navRect = navRef.current.getBoundingClientRect();
+    const top = Math.max(0, Math.ceil(navRect.height));
+    const height = Math.max(0, window.innerHeight - top);
+    return { top, height };
+  };
+
+  // lock body scroll when menu open to remove extra scrollbar (preserve padding to avoid layout shift)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (isOpen) {
+      // save original styles only once per open
+      if (!originalBodyStyles.current) {
+        originalBodyStyles.current = {
+          overflow: document.body.style.overflow,
+          htmlOverflow: document.documentElement.style.overflow,
+          paddingRight: document.body.style.paddingRight,
+        };
+      }
+
+      // avoid layout shift by adding padding equal to scrollbar width
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollBarWidth > 0) {
+        document.body.style.paddingRight = `${scrollBarWidth}px`;
+      }
+
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      // restore original styles
+      if (originalBodyStyles.current) {
+        document.body.style.overflow = originalBodyStyles.current.overflow ?? "";
+        document.documentElement.style.overflow = originalBodyStyles.current.htmlOverflow ?? "";
+        document.body.style.paddingRight = originalBodyStyles.current.paddingRight ?? "";
+        originalBodyStyles.current = null;
+      }
+    }
+
+    // cleanup on unmount
+    return () => {
+      if (originalBodyStyles.current) {
+        document.body.style.overflow = originalBodyStyles.current.overflow ?? "";
+        document.documentElement.style.overflow = originalBodyStyles.current.htmlOverflow ?? "";
+        document.body.style.paddingRight = originalBodyStyles.current.paddingRight ?? "";
+        originalBodyStyles.current = null;
+      }
+    };
+  }, [isOpen]);
+
+  // Open/close animations: menu "flows" down from bottom of navbar (height anim)
   useEffect(() => {
     const menu = menuRef.current;
-    const items = listRef.current?.querySelectorAll("a") ?? [];
+    const items = (listRef.current?.querySelectorAll("a") ?? []) as NodeListOf<HTMLElement>;
     if (!menu) return;
 
     tlRef.current?.kill();
 
+    const { top, height } = computeLayout();
+
+    // set base styles so menu sits under nav
+    gsap.set(menu, {
+      position: "fixed",
+      left: 0,
+      right: 0,
+      top,
+      overflow: "hidden",
+      zIndex: 60,
+      background: "rgba(0,0,0,0.6)",
+      backdropFilter: "blur(6px)",
+      display: "block",
+      height: 0, // start collapsed
+    });
+
+    // icon animation (crossfade + rotate)
+    const iconTl = gsap.timeline();
     if (isOpen) {
-      // Opening animation
-      gsap.set(menu, { 
-        display: "block",
-        height: 0,
-        overflow: "hidden"
-      });
-      gsap.set(items, { opacity: 0, y: -15 });
+      iconTl.to(iconHamburgerRef.current, { opacity: 0, scale: 0.85, rotate: -10, duration: 0.16, ease: "power2.in" }, 0)
+            .fromTo(iconCloseRef.current, { opacity: 0, scale: 0.9, rotate: 10 }, { opacity: 1, scale: 1, rotate: 0, duration: 0.22, ease: "power2.out" }, "-=0.1");
+    } else {
+      iconTl.to(iconCloseRef.current, { opacity: 0, scale: 0.85, rotate: 10, duration: 0.14, ease: "power2.in" }, 0)
+            .fromTo(iconHamburgerRef.current, { opacity: 0, scale: 0.9, rotate: -10 }, { opacity: 1, scale: 1, rotate: 0, duration: 0.2, ease: "power2.out" }, "-=0.08");
+    }
+
+    // animate menu flowing down (height from 0 -> computed height) and menu items with stagger
+    if (isOpen) {
+      // prepare items
+      if (items.length) gsap.set(items, { opacity: 0, y: 18, transformOrigin: "left center" });
 
       const tl = gsap.timeline();
-      tl.to(menu, { 
-        height: "auto", 
-        duration: 0.4, 
-        ease: "power2.out" 
-      })
-      .to(items, { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.2, 
-        stagger: 0.03, 
-        ease: "power2.out" 
-      }, "-=0.2");
+      tl.to(menu, { height, duration: 0.45, ease: "power3.out" }, 0) // grow downwards
+        .fromTo(menu, { y: -6, opacity: 0 }, { y: 0, opacity: 1, duration: 0.36, ease: "power2.out" }, 0)
+        .to(items, { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: "power2.out" }, "-=0.24");
 
       tlRef.current = tl;
-    } else if (menu.style.display !== "none") {
-      // Closing animation - only run if menu was open
+    } else {
+      // collapse back up
       const tl = gsap.timeline();
-      tl.to(items, { 
-        opacity: 0, 
-        y: -15, 
-        duration: 0.2, 
-        stagger: 0.03, 
-        ease: "power2.in" 
-      })
-      .to(menu, { 
-        height: 0, 
-        duration: 0.3, 
-        ease: "power2.inOut" 
-      }, "-=0.1")
-      .set(menu, { display: "none" });
+      if (items.length) {
+        tl.to(items, { opacity: 0, y: 10, duration: 0.18, stagger: 0.04, ease: "power2.in" }, 0);
+      }
+      tl.to(menu, { height: 0, duration: 0.36, ease: "power2.inOut" }, "-=0.12")
+        .to(menu, { opacity: 0, duration: 0.08 }, "-=0.2")
+        .set(menu, { display: "none" }, "+=0");
 
       tlRef.current = tl;
     }
 
+    // ensure layout updates on resize while open
+    const onResize = () => {
+      if (!isOpen) return;
+      const { top: newTop, height: newH } = computeLayout();
+      gsap.set(menu, { top: newTop });
+      // adjust to new height without jump
+      gsap.to(menu, { height: newH, duration: 0.28, ease: "power2.out" });
+    };
+    window.addEventListener("resize", onResize);
+
     return () => {
+      iconTl.kill();
       tlRef.current?.kill();
+      window.removeEventListener("resize", onResize);
     };
   }, [isOpen]);
 
@@ -127,13 +202,10 @@ export default function Navbar() {
       ref={navRef}
       className={`${
         isScrolled ? "fixed" : "absolute"
-      } top-0 left-0 right-0 z-200 ${
-        isScrolled ? "shadow-md bg-[#151515]" : "backdrop-blur-xsm bg-black/20"
-      }`}
+      } top-0 left-0 right-0 z-200 ${isScrolled ? "shadow-md bg-[#151515]" : "backdrop-blur-xsm bg-black/20"}`}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-18 md:h-22">
-          {/* Logo */}
           <div className="">
             <Link href="/" className="flex items-center text-xl font-medium uppercase tracking-wider">
               <span className="inline-block font-semibold tracking-tighter transition-all duration-300">
@@ -142,48 +214,44 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:block tracking-wider uppercase text-sm">
             <div className="ml-10 flex items-center space-x-12">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="font-medium transition-all duration-300"
-                >
+                <Link key={link.name} href={link.href} className="font-medium transition-all duration-300">
                   {link.name}
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md focus:outline-none leading-none transition-all duration-300"
+              ref={btnRef}
+              onClick={() => setIsOpen((s) => !s)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md focus:outline-none leading-none transition-transform duration-200 relative"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
-              {isOpen ? (
+              <span ref={iconHamburgerRef} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+                <GiHamburgerMenu size={22} aria-hidden />
+              </span>
+              <span ref={iconCloseRef} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", position: "absolute", opacity: 0, pointerEvents: "none" }}>
                 <TfiClose size={22} aria-hidden />
-              ) : (
-                <GiHamburgerMenu size={22} aria-hidden className="font-extrabold" />
-              )}
+              </span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation container — starts collapsed and flows down from navbar bottom */}
       <div
-        className="md:hidden backdrop-blur-sm border-t transition-colors duration-300"
+        className="md:hidden transition-colors duration-300"
         ref={menuRef}
         style={{ display: "none", height: 0, overflow: "hidden" }}
         aria-hidden={!isOpen}
       >
-        <div ref={listRef}>
-          <div className="px-5 pt-2 pb-3 space-y-1 sm:px-3">
+        <div ref={listRef} className="h-full flex flex-col">
+          <div className="px-5 pt-6 pb-3 space-y-1 sm:px-3 overflow-auto">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -197,6 +265,14 @@ export default function Navbar() {
                 </span>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-auto px-5 pb-8">
+            <div className="text-sm text-[#d8d8d8]/70">Contact</div>
+            <div className="mt-3 space-y-2">
+              <a className="block text-sm" href="mailto:info@automation.com">info@automation.com</a>
+              <a className="block text-sm" href="tel:+15551234567">+1 (555) 123-4567</a>
+            </div>
           </div>
         </div>
       </div>

@@ -20,17 +20,45 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    // Format message for WhatsApp
-    const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone || 'Not provided'}%0A*Company:* ${formData.company || 'Not provided'}%0A%0A*Message:*%0A${formData.message}`;
-    
-    // Replace with your WhatsApp number (include country code without + or spaces)
-    // Example: For +1 555 123 4567, use 15551234567
-    const whatsappNumber = '918075595509'; // Replace with your actual number
-    
-    // Open WhatsApp with pre-filled message
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-    
+
+    const to = 'amarnathsooraj7575@gmail.com'; // recipient
+    const subject = 'Enquiry';
+    const bodyLines = [
+      `Name: ${formData.name || 'Not provided'}`,
+      `Email: ${formData.email || 'Not provided'}`,
+      `Phone: ${formData.phone || 'Not provided'}`,
+      `Company: ${formData.company || 'Not provided'}`,
+      '',
+      'Message:',
+      formData.message || 'No message provided',
+    ];
+    const body = bodyLines.join('\n');
+
+    // Gmail compose URL (opens Gmail in a new tab with compose window)
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Try opening Gmail compose in a new tab
+    const opened = window.open(gmailUrl, '_blank');
+
+    // If popup blocked or Gmail unavailable, fallback to mailto
+    if (!opened) {
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // create and click temporary anchor as fallback
+      const a = document.createElement('a');
+      a.href = mailto;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      try {
+        window.open(mailto, '_self');
+      } catch {
+        // ignore
+      }
+    }
+
     // Reset form
     setFormData({
       name: '',
@@ -155,7 +183,7 @@ export default function Contact() {
                 type='submit'
                 className='w-full bg-[#0196c7] text-white px-8 py-4 rounded-sm hover:bg-[#0196c7]/80 transition-colors duration-300 uppercase tracking-wider text-sm font-medium'
               >
-                Send via WhatsApp
+                Send Enquiry via Email
               </button>
             </form>
 
