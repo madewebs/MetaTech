@@ -24,8 +24,7 @@ export default function Contact() {
   };
 
   const encodeBody = (text: string) => {
-    // encode and normalize newlines to CRLF (some clients expect CRLF)
-    return encodeURIComponent(text).replace(/%0A/g, '%0D%0A');
+    return encodeURIComponent(text);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,51 +46,27 @@ export default function Contact() {
     const encTo = encodeURIComponent(to);
     const encSub = encodeURIComponent(subject);
 
-    // Gmail web compose URL
+    // Prefer Gmail web compose (works reliably in browser; should preserve subject/body)
     const gmailWeb = `https://mail.google.com/mail/?view=cm&fs=1&to=${encTo}&su=${encSub}&body=${body}`;
 
-    // mailto fallback
+    // mailto fallback if Gmail web not available
     const mailto = `mailto:${encTo}?subject=${encSub}&body=${body}`;
 
-    // Gmail app URL scheme (mobile)
-    const gmailApp = `googlegmail://co?to=${encTo}&subject=${encSub}&body=${body}`;
-
     try {
-      // On desktop prefer Gmail web compose in new tab
-      if (!isMobile()) {
-        const opened = window.open(gmailWeb, '_blank');
-        if (!opened) {
-          // popup blocked -> fallback to mailto
-          const a = document.createElement('a');
-          a.href = mailto;
-          a.style.display = 'none';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        }
-      } else {
-        // On mobile try Gmail app scheme first (if installed), then Gmail web, then mailto
-        // Using location.href for app schemes so OS handles it
-        // Note: app scheme may simply fail silently if app not installed; then try mailto afterwards
-        window.location.href = gmailApp;
+      // Open Gmail web compose in a new tab/window directly from the user gesture (most reliable)
+      const opened = window.open(gmailWeb, '_blank', 'noopener,noreferrer');
 
-        // Give a short delay for the OS to open the app; if nothing opens, fallback
-        setTimeout(() => {
-          // Try Gmail web in new tab (may open web compose)
-          const opened = window.open(gmailWeb, '_blank');
-          if (!opened) {
-            // final fallback to mailto link
-            const a = document.createElement('a');
-            a.href = mailto;
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-          }
-        }, 600);
+      // If window.open returned null (popup blocked) or Gmail web didn't open, fallback to mailto
+      if (!opened) {
+        const a = document.createElement('a');
+        a.href = mailto;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       }
-    } catch (err) {
-      // final fallback
+    } catch {
+      // final fallback to mailto
       const a = document.createElement('a');
       a.href = mailto;
       a.style.display = 'none';
