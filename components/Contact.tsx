@@ -18,10 +18,20 @@ export default function Contact() {
     });
   };
 
+  const isMobile = () => {
+    if (typeof navigator === "undefined") return false;
+    return /Android|iPhone|iPad|iPod|Windows Phone|IEMobile/i.test(navigator.userAgent);
+  };
+
+  const encodeBody = (text: string) => {
+    // encode and normalize newlines to CRLF (some clients expect CRLF)
+    return encodeURIComponent(text).replace(/%0A/g, '%0D%0A');
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const to = 'amarnathsooraj7575@gmail.com'; // recipient
+    const to = 'amarnathsooraj7575@gmail.com';
     const subject = 'Enquiry';
     const bodyLines = [
       `Name: ${formData.name || 'Not provided'}`,
@@ -32,31 +42,62 @@ export default function Contact() {
       'Message:',
       formData.message || 'No message provided',
     ];
-    const body = bodyLines.join('\n');
+    const bodyRaw = bodyLines.join('\n');
+    const body = encodeBody(bodyRaw);
+    const encTo = encodeURIComponent(to);
+    const encSub = encodeURIComponent(subject);
 
-    // Gmail compose URL (opens Gmail in a new tab with compose window)
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Gmail web compose URL
+    const gmailWeb = `https://mail.google.com/mail/?view=cm&fs=1&to=${encTo}&su=${encSub}&body=${body}`;
 
-    // Try opening Gmail compose in a new tab
-    const opened = window.open(gmailUrl, '_blank');
+    // mailto fallback
+    const mailto = `mailto:${encTo}?subject=${encSub}&body=${body}`;
 
-    // If popup blocked or Gmail unavailable, fallback to mailto
-    if (!opened) {
-      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Gmail app URL scheme (mobile)
+    const gmailApp = `googlegmail://co?to=${encTo}&subject=${encSub}&body=${body}`;
 
-      // create and click temporary anchor as fallback
+    try {
+      // On desktop prefer Gmail web compose in new tab
+      if (!isMobile()) {
+        const opened = window.open(gmailWeb, '_blank');
+        if (!opened) {
+          // popup blocked -> fallback to mailto
+          const a = document.createElement('a');
+          a.href = mailto;
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+      } else {
+        // On mobile try Gmail app scheme first (if installed), then Gmail web, then mailto
+        // Using location.href for app schemes so OS handles it
+        // Note: app scheme may simply fail silently if app not installed; then try mailto afterwards
+        window.location.href = gmailApp;
+
+        // Give a short delay for the OS to open the app; if nothing opens, fallback
+        setTimeout(() => {
+          // Try Gmail web in new tab (may open web compose)
+          const opened = window.open(gmailWeb, '_blank');
+          if (!opened) {
+            // final fallback to mailto link
+            const a = document.createElement('a');
+            a.href = mailto;
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }
+        }, 600);
+      }
+    } catch (err) {
+      // final fallback
       const a = document.createElement('a');
       a.href = mailto;
       a.style.display = 'none';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-
-      try {
-        window.open(mailto, '_self');
-      } catch {
-        // ignore
-      }
     }
 
     // Reset form
