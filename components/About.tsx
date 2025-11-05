@@ -109,7 +109,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className='w-full bg-[#d8d8d8] text-[#151515] py-12 overflow-hidden'>
+    <div className='w-full bg-[#fefefe] text-[#151515] py-12 overflow-hidden'>
       <div className='mx-auto max-w-7xl px-6'>
         {/* Header Section */}
         <div className='mb-12'>

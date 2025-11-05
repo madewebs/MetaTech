@@ -192,7 +192,7 @@ function Services() {
 
 
   return (
-    <div className="w-full bg-[#d8d8d8] text-[#151515] py-16 overflow-hidden">
+    <div className="w-full bg-[#fefefe] text-[#151515] py-16 overflow-hidden">
       <div className='mx-auto max-w-7xl px-6'>
         <div className="mb-12">
           <h2 ref={headingRef} className="text-4xl md:text-5xl font-medium mb-3">
