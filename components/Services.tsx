@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -212,38 +213,40 @@ function Services() {
                   key={service.id}
                   className="flex-shrink-0 w-[85%] md:w-[calc(33.333%-16px)]"
                 >
-                  <div className="bg-[#151515] rounded-sm overflow-hidden duration-300 cursor-pointer group">
-                    <div 
-                      ref={(el) => {
-                        imageRefs.current[index] = el;
-                      }}
-                      className="relative h-[500px] w-full overflow-hidden"
-                    >
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover"
-                      />
-                      
-                      {/* Dark Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                      
-                      {/* Text Content Overlay */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
-                        <h3 className="text-xl md:text-2xl font-semibold mb-2">
-                          {service.title}
-                        </h3>
-                        <p className="text-sm md:text-base text-white/80 mb-3 line-clamp-2">
-                          {service.description}
-                        </p>
-                        <button className="text-sm md:text-md font-normal uppercase tracking-widest text-white transition-colors duration-300 flex items-center gap-2 group/btn">
-                          Read More
-                          <span className="transform group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
-                        </button>
+                  <Link href="/services/plc-programming" className="block">
+                    <div className="bg-[#151515] rounded-sm overflow-hidden duration-300 cursor-pointer group">
+                      <div 
+                        ref={(el) => {
+                          imageRefs.current[index] = el;
+                        }}
+                        className="relative h-[500px] w-full overflow-hidden"
+                      >
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover"
+                        />
+                        
+                        {/* Dark Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        
+                        {/* Text Content Overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+                          <h3 className="text-xl md:text-2xl font-semibold mb-2">
+                            {service.title}
+                          </h3>
+                          <p className="text-sm md:text-base text-white/80 mb-3 line-clamp-2">
+                            {service.description}
+                          </p>
+                          <span className="text-sm md:text-md font-normal uppercase tracking-widest text-white transition-colors duration-300 flex items-center gap-2">
+                            Read More
+                            <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>
