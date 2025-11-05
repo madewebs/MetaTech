@@ -148,7 +148,7 @@ export default function Sponsors() {
 
       </div>
       {/* Stats Section */}
-      <div ref={statsRef} className="bg-[#d8d8d8] text-[#151515] py-16 mt-20">
+      <div ref={statsRef} className="bg-[#fefefe] text-[#151515] py-16 mt-20">
         <div className="mx-auto max-w-7xl px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
             <h3 className="text-4xl md:text-5xl font-bold text-[#0196c7] mb-2">
