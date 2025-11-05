@@ -23,8 +23,9 @@ export default function Contact() {
     return /Android|iPhone|iPad|iPod|Windows Phone|IEMobile/i.test(navigator.userAgent);
   };
 
-  const encodeBody = (text: string) => {
-    return encodeURIComponent(text);
+  const encodeMailBody = (text: string) => {
+    // encode and normalize newlines to CRLF
+    return encodeURIComponent(text).replace(/%0A/g, '%0D%0A');
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,21 +43,24 @@ export default function Contact() {
       formData.message || 'No message provided',
     ];
     const bodyRaw = bodyLines.join('\n');
-    const body = encodeBody(bodyRaw);
-    const encTo = encodeURIComponent(to);
+    const encBody = encodeMailBody(bodyRaw);
     const encSub = encodeURIComponent(subject);
 
-    // Prefer Gmail web compose (works reliably in browser; should preserve subject/body)
-    const gmailWeb = `https://mail.google.com/mail/?view=cm&fs=1&to=${encTo}&su=${encSub}&body=${body}`;
+    // mailto format (will be used on mobile)
+    const mailto = `mailto:${to}?subject=${encSub}&body=${encBody}`;
 
-    // mailto fallback if Gmail web not available
-    const mailto = `mailto:${encTo}?subject=${encSub}&body=${body}`;
+    // On mobile navigate to mailto (uses OS mail handler / Gmail app if registered)
+    if (isMobile()) {
+      // Use location.href to trigger mail handler on mobile
+      window.location.href = mailto;
+      return;
+    }
+
+    // Desktop: prefer Gmail web compose, fallback to mailto if blocked
+    const gmailWeb = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encSub}&body=${encBody}`;
 
     try {
-      // Open Gmail web compose in a new tab/window directly from the user gesture (most reliable)
       const opened = window.open(gmailWeb, '_blank', 'noopener,noreferrer');
-
-      // If window.open returned null (popup blocked) or Gmail web didn't open, fallback to mailto
       if (!opened) {
         const a = document.createElement('a');
         a.href = mailto;
@@ -66,7 +70,6 @@ export default function Contact() {
         document.body.removeChild(a);
       }
     } catch {
-      // final fallback to mailto
       const a = document.createElement('a');
       a.href = mailto;
       a.style.display = 'none';
@@ -74,15 +77,6 @@ export default function Contact() {
       a.click();
       document.body.removeChild(a);
     }
-
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      message: '',
-    });
   };
 
   return (
