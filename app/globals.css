@@ -4,7 +4,7 @@
 :root {
   --background:#151515;
   --foreground:#efefef;
-  --font-sans: 'Montserrat', 'Exo', 'Manrope', sans-serif;
+  --font-sans: 'Manrope', sans-serif;
 }
 
 body {

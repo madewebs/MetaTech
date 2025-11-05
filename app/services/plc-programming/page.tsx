@@ -36,7 +36,7 @@ export default function Page() {
         />
         {/* Hero / intro with short tagline - left aligned.
             Inner container spacing now matches main (max-w-5xl mx-auto py-20 px-6 md:px-12) */}
-        <header className="min-h-[70vh] flex items-center">
+        <header className="min-h-[60vh] flex items-center">
           <div className="max-w-5xl mx-auto py-20 px-6 md:px-12"
             ref={headerRef}>
             <h1

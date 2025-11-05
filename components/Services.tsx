@@ -26,37 +26,43 @@ function Services() {
       id: 1, 
       image: "/one.webp",
       title: "PLC Programming",
-      description: "Advanced programmable logic controller solutions for automated systems."
+      description: "Advanced programmable logic controller solutions for automated systems.",
+      href: "/services/plc-programming"
     },
     { 
       id: 2, 
       image: "/two.webp",
       title: "Robotics Integration",
-      description: "Seamless integration of industrial robots and cobots."
+      description: "Seamless integration of industrial robots and cobots.",
+      href: "/services/robotics-integration"
     },
     { 
       id: 3, 
       image: "/three.webp",
       title: "SCADA Systems",
-      description: "Supervisory control and data acquisition for real-time monitoring."
+      description: "Supervisory control and data acquisition for real-time monitoring.",
+      href: "/services/scada-systems"
     },
     { 
       id: 4, 
       image: "/one.webp",
       title: "Drive Systems",
-      description: "Variable frequency drives and motion control solutions."
+      description: "Variable frequency drives and motion control solutions.",
+      href: "/services/drive-systems"
     },
     { 
       id: 5, 
       image: "/two.webp",
       title: "Control Panels",
-      description: "Custom electrical control panel design and manufacturing."
+      description: "Custom electrical control panel design and manufacturing.",
+      href: "/services/control-panels"
     },
     { 
       id: 6, 
       image: "/three.webp",
       title: "Automation Design",
-      description: "Complete automation system design and implementation."
+      description: "Complete automation system design and implementation.",
+      href: "/services/automation-design"
     },
   ];
 
@@ -184,8 +190,9 @@ function Services() {
     }
   };
 
+
   return (
-    <div className="w-full bg-[#d8d8d8] text-[#151515] py-12 overflow-hidden">
+    <div className="w-full bg-[#d8d8d8] text-[#151515] py-16 overflow-hidden">
       <div className='mx-auto max-w-7xl px-6'>
         <div className="mb-12">
           <h2 ref={headingRef} className="text-4xl md:text-5xl font-medium mb-3">
@@ -213,7 +220,7 @@ function Services() {
                   key={service.id}
                   className="flex-shrink-0 w-[85%] md:w-[calc(33.333%-16px)]"
                 >
-                  <Link href="/services/plc-programming" className="block">
+                  <Link href={service.href} className="block">
                     <div className="bg-[#151515] rounded-sm overflow-hidden duration-300 cursor-pointer group">
                       <div 
                         ref={(el) => {

@@ -9,7 +9,7 @@ import Services from "@/components/Services";
 import Sponsers from "@/components/Sponsers";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
-
+import Project from "@/components/Project";
 
 
 export default function Home() {
@@ -141,8 +141,9 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      {/* hero slides */}
       <div 
-        className="relative min-h-[85vh] w-full overflow-hidden font-light z-100"
+        className="relative min-h-[90vh] w-full overflow-hidden font-light z-100"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -233,6 +234,7 @@ export default function Home() {
       </div>
       <About/>
       <Services/>
+      <Project/>
       <Sponsers/>
       <Contact/>
       <Footer/>

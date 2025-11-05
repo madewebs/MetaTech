@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -161,9 +162,9 @@ export default function About() {
               reduce costs, and ensure sustainable growth in an increasingly competitive landscape.
             </p>
             <div ref={buttonRef} className='pt-4'>
-              <button className='bg-[#151515] text-[#d8d8d8] px-8 py-3 rounded-sm hover:bg-[#0196c7] transition-colors duration-300 uppercase tracking-wider text-sm font-medium'>
+              <Link href="/about" className='bg-[#151515] text-[#d8d8d8] px-8 py-3 rounded-sm hover:bg-[#303030] transition-colors duration-300 uppercase tracking-wider text-sm font-medium'>
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
         </div>
