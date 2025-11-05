@@ -56,7 +56,7 @@ export default function Page() {
             <h1 className="text-4xl md:text-5xl font-semibold mb-6">
               PLC Programming
             </h1>
-            <div className="md:text-xl text-md text-[#151515]/90">
+            <div className="md:text-xl text-md text-[#151515]/90 text-justify">
               <p className="mb-4 leading-relaxed">
                 Our PLC programming service delivers reliable, maintainable control
                 systems for industrial automation. We develop modular ladder,
