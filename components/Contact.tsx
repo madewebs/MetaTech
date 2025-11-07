@@ -229,7 +229,6 @@ export default function Contact() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className='grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300'
                   ></iframe>
                 </div>
               </div>

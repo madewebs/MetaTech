@@ -152,14 +152,14 @@ export default function PLCProgramming() {
                 </p>
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h3 className="font-semibold mb-3">PLC Series:</h3>
+                    <h3 className="font-semibold mb-3 text-[#151515]">PLC Series:</h3>
                     <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
                       <li>MELSEC-Q Series</li>
                       <li>MELSEC-F Series</li>
                     </ul>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-3">Communication Protocols:</h3>
+                    <h3 className="font-semibold mb-3 text-[#151515]">Communication Protocols:</h3>
                     <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
                       <li>DeviceNet</li>
                       <li>CC Link</li>
@@ -169,7 +169,7 @@ export default function PLCProgramming() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-3">Software Skills:</h3>
+                  <h3 className="font-semibold mb-3 text-[#151515]">Software Skills:</h3>
                   <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
                     <li>GX Developer</li>
                     <li>GX Works</li>
