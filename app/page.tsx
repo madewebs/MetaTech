@@ -232,12 +232,23 @@ export default function Home() {
           })}
         </div>
       </div>
-      <About/>
-      <Services/>
-      <Project/>
-      <Sponsers/>
-      <Contact/>
-      <Footer/>
+      <section id="about">
+          <About />
+        </section>
+
+        <section id="services">
+          <Services />
+        </section>
+
+        <section id="projects">
+          <Project showAll={false} limit={3} />
+          <Sponsers />
+        </section>
+
+        <section id="contact">
+          <Contact />
+        </section>
+        <Footer />
     </>
   );
 }

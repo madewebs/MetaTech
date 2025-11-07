@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useRef, useEffect } from "react";
+import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
+gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
@@ -14,7 +15,7 @@ export default function About() {
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const paragraphsRef = useRef<(HTMLParagraphElement | null)[]>([]);
+  const paragraphsRef = useRef<(HTMLElement | null)[]>([]);
   const buttonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function About() {
       gsap.from(imageRef.current, {
         opacity: 0,
         y: 50,
-        scale: 0.95,
+        scale: 0.98,
         duration: 1,
         ease: "power3.out",
         scrollTrigger: {
@@ -80,7 +81,7 @@ export default function About() {
             opacity: 0,
             y: 30,
             duration: 0.8,
-            delay: index * 0.15,
+            delay: index * 0.12,
             ease: "power3.out",
             scrollTrigger: {
               trigger: paragraph,
@@ -108,63 +109,112 @@ export default function About() {
     return () => ctx.revert();
   }, []);
 
+  // Handle smooth scroll to contact section with GSAP animation
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      // Animate scroll using GSAP
+      gsap.to(window, {
+        scrollTo: {
+          y: contactSection,
+          autoKill: false,
+        },
+        duration: 1.2,
+        ease: "power2.inOut",
+      });
+    }
+  };
+
   return (
-    <div className='w-full bg-[#fefefe] text-[#151515] py-12 overflow-hidden'>
-      <div className='mx-auto max-w-7xl px-6'>
+    <div className="w-full bg-[#fefefe] text-[#151515] py-12 overflow-hidden" id="about">
+      <div className="mx-auto max-w-7xl px-6 text-justify">
         {/* Header Section */}
-        <div className='mb-12'>
-          <h2 ref={headingRef} className='text-4xl md:text-5xl font-medium mb-4'>
+        <div className="mb-12">
+          <h2 ref={headingRef} className="text-4xl md:text-5xl font-medium mb-4">
             About Us
           </h2>
-          <p ref={captionRef} className='text-[#151515]/70 text-md md:text-xl max-w-3xl'>
-            Pioneering automation excellence since 2009, transforming industries through innovative solutions.
+          <p
+            ref={captionRef}
+            className="text-[#151515]/70 text-md md:text-xl max-w-3xl"
+          >
+            A specialized engineering firm dedicated to delivering high-quality industrial automation solutions. Our vision is to become the first choice for industrial line building, system designing, and robotic solutions.
           </p>
         </div>
 
         {/* Main Content Grid */}
-        <div className='grid md:grid-cols-2 gap-12'>
+        <div className="grid md:grid-cols-2 gap-12">
           {/* Image Section */}
-          <div ref={imageRef} className='relative h-[400px] md:h-full rounded-sm overflow-hidden'>
+          <div
+            ref={imageRef}
+            className="relative h-[400px] md:h-full rounded-xs overflow-hidden"
+          >
             <Image
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=1200&fit=crop"
-              alt="About Us"
+              src="/about.webp"
+              alt="About Metatech Automation"
               fill
-              className='object-cover'
+              className="object-cover"
               unoptimized
             />
-            <div className='absolute inset-0 bg-gradient-to-t from-[#151515]/60 to-transparent'></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#151515]/60 to-transparent"></div>
           </div>
 
           {/* Content Section */}
-          <div ref={contentRef} className='flex flex-col justify-start space-y-6'>
-            <h3 ref={titleRef} className='text-3xl md:text-4xl font-medium tracking-tight'>
-              Driving Industrial Revolution 4.0
+          <div ref={contentRef} className="flex flex-col justify-start space-y-6">
+            <h3 ref={titleRef} className="text-2xl md:text-3xl font-medium tracking-tight">
+              Our Story & Expertise
             </h3>
-            <p 
+
+            <p
               ref={(el) => {
                 paragraphsRef.current[0] = el;
               }}
-              className='text-base md:text-lg text-[#151515]/80 leading-relaxed text-justify'
+              className="text-base md:text-lg text-[#151515]/80 leading-relaxed"
             >
-              We are a leading automation solutions provider, specializing in PLC programming, 
-              robotics integration, and advanced control systems. Our team of expert engineers 
-              brings decades of combined experience to deliver tailored solutions that optimize 
-              operations and drive efficiency.
+              Metatech Automation was founded by engineers with over 10 years of industry experience, making us a dream organization built by automation professionals for automation excellence. As the demand for automation continues to rise across industries, we are committed to providing best-in-class, customized automation solutions tailored to meet the unique needs of our clients.
             </p>
-            <p 
+
+            <p
               ref={(el) => {
                 paragraphsRef.current[1] = el;
               }}
-              className='text-base md:text-lg text-[#151515]/80 leading-relaxed text-justify'
+              className="text-base md:text-lg text-[#151515]/80 leading-relaxed"
             >
-              From concept to commissioning, we partner with clients across industries to 
-              implement cutting-edge automation technologies that enhance productivity, 
-              reduce costs, and ensure sustainable growth in an increasingly competitive landscape.
+              Our highly skilled team brings extensive experience across major automation platforms, including Siemens, Rockwell, Mitsubishi, and others. Though we are currently a focused team of four dedicated professionals, we are driven by a shared passion for innovation, precision, and client satisfaction.
             </p>
-            <div ref={buttonRef} className='pt-4'>
-              <Link href="/about" className='bg-[#151515] text-[#d8d8d8] px-8 py-3 rounded-sm hover:bg-[#303030] transition-colors duration-300 uppercase tracking-wider text-sm font-medium'>
-                Learn More
-              </Link>
+
+            <p
+              ref={(el) => {
+                paragraphsRef.current[2] = el;
+              }}
+              className="text-base md:text-lg text-[#151515]/80 leading-relaxed font-medium"
+            >
+              Core Services:
+            </p>
+
+            <ul
+              ref={(el) => {
+                paragraphsRef.current[3] = el;
+              }}
+              className="text-base md:text-lg text-[#151515]/80 leading-relaxed space-y-2"
+            >
+              <li>• PLC Programming</li>
+              <li>• HMI / SCADA Development</li>
+              <li>• Industrial Drives Integration</li>
+              <li>• Customized Industrial Automation Systems</li>
+            </ul>
+
+            <div className="pt-4">
+              <div ref={buttonRef}>
+                <a
+                  href="#contact"
+                  onClick={handleContactClick}
+                  className="bg-[#151515] text-[#d8d8d8] px-8 py-3 rounded-sm hover:bg-[#303030] transition-colors duration-300 uppercase tracking-wider text-sm font-medium inline-block cursor-pointer"
+                >
+                  GET IN TOUCH
+                </a>
+              </div>
             </div>
           </div>
         </div>

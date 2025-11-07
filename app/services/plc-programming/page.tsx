@@ -1,24 +1,46 @@
 "use client";
+
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export default function Page() {
-  const bgUrl =
-    "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1920&h=1080&fit=crop";
+gsap.registerPlugin(ScrollTrigger);
 
-  const headerRef = useRef<HTMLHeadingElement | null>(null);
-
+export default function PLCProgramming() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+   const bgUrl = "/one.webp";
   useEffect(() => {
     const ctx = gsap.context(() => {
-      if (headerRef.current) {
-        gsap.fromTo(
-          headerRef.current,
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
-        );
-      }
+      gsap.from(headingRef.current, {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: headingRef.current, start: "top 85%", once: true },
+      });
+
+      gsap.from(imageRef.current, {
+        opacity: 0,
+        y: 50,
+        scale: 0.98,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: imageRef.current, start: "top 80%", once: true },
+      });
+
+      gsap.from(contentRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "power3.out",
+        scrollTrigger: { trigger: contentRef.current, start: "top 85%", once: true },
+      });
     });
 
     return () => ctx.revert();
@@ -27,89 +49,137 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <div className="relative min-h-screen w-full text-white">
-        {/* Fixed background (separate element so mobile works reliably) */}
+      <div className="w-full">
+        {/* Hero Section with Image */}
         <div
           className="fixed inset-0 -z-20 bg-center bg-cover brightness-40"
           style={{ backgroundImage: `url('${bgUrl}')` }}
           aria-hidden
         />
-        {/* Hero / intro with short tagline - left aligned.
-            Inner container spacing now matches main (max-w-5xl mx-auto py-20 px-6 md:px-12) */}
         <header className="min-h-[60vh] flex items-center">
-          <div className="max-w-5xl mx-auto py-20 px-6 md:px-12"
-            ref={headerRef}>
-            <h1
-              className="text-4xl md:text-5xl font-bold tracking-tight text-left"
-            >
+          <div className="max-w-5xl mx-auto py-20 px-6 md:px-12" ref={headingRef}>
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-center">
               PLC Programming
             </h1>
-            <p className="mt-4 text-lg md:text-2xl text-white/90 text-center">
-              Precision control. Reliable uptime.
+            <p className="mt-4 text-lg md:text-2xl text-white/90 text-center font-wide">
+              End-to-end automation system architecture and delivery.
             </p>
           </div>
         </header>
 
-        {/* Sections that "override" the fixed bg */}
-        <main className="bg-[#efefef] relative z-10 text-[#151515]">
-          <div className="max-w-6xl mx-auto py-20 px-6">
-            <h1 className="text-4xl md:text-5xl font-semibold mb-6">
-              PLC Programming
-            </h1>
-            <div className="md:text-xl text-md text-[#151515]/90 text-justify">
-              <p className="mb-4 leading-relaxed">
-                Our PLC programming service delivers reliable, maintainable control
-                systems for industrial automation. We develop modular ladder,
-                structured text and function block code tailored to your hardware
-                platform and operational requirements. Every solution focuses on
-                safety, deterministic performance and easy troubleshooting.
-              </p>
+          {/* Title Overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+            
+          </div>
+        </div>
 
-              <p className="mb-4 leading-relaxed">
-                Typical engagements include system design, I/O mapping, HMI
-                integration, interlocks, alarm handling, recipe management and
-                on-site commissioning. We apply best practices: version control,
-                simulation where applicable, comprehensive documentation and
-                acceptance testing to minimise commissioning time and long‑term
-                support effort.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-4 mt-6">
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Platforms</h3>
-                <p className="text-sm">
-                  Siemens, Rockwell/Allen‑Bradley, Schneider, Mitsubishi, Omron
-                  and others.
+        {/* Content Section */}
+        <div className="py-12 bg-[#fefefe]">
+          <div className="mx-auto max-w-5xl px-6">
+            <div ref={contentRef} className="space-y-12">
+              {/* Rockwell */}
+              <section>
+                <h2 className="text-3xl md:text-4xl font-light mb-4 text-[#151515]">Rockwell / Allen Bradley</h2>
+                <p className="text-base md:text-lg text-[#151515]/80 mb-4 text-justify">
+                  Rockwell is one of the leading automation solution providers worldwide. We have a highly experienced team in Rockwell/AB products, including PLC, HMI, Drives, Servo, and Safety Devices. Our services cover both programming and hardware support.
                 </p>
-              </div>
-
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Deliverables</h3>
-                <p className="text-sm">
-                  Source code, I/O & tag documentation, HMI screens, test
-                  procedures and commissioning support.
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h3 className="font-semibold mb-3 text-[#151515]">PLC Series:</h3>
+                    <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
+                      <li>Micro Logix</li>
+                      <li>Compact Logix</li>
+                      <li>Control Logix</li>
+                      <li>Guard Logix</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-3 text-[#151515]">Communication Protocols:</h3>
+                    <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
+                      <li>Ethernet</li>
+                      <li>DeviceNet</li>
+                      <li>RS 232</li>
+                    </ul>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-3 text-[#151515]">Software Skills:</h3>
+                  <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
+                    <li>RS Logix 500</li>
+                    <li>RS Logix 5000</li>
+                    <li>Studio 5000</li>
+                    <li>CCW</li>
+                    <li>Factory Talk Studio</li>
+                    <li>RSNetWorx</li>
+                  </ul>
+                </div>
+                <p className="text-[#151515]/80 mt-4 text-justify ">
+                  Our team has extensive experience with standard programming in Rockwell, including DCP Std, APA/FNA Std, and GM Std used by major OEMs.
                 </p>
-              </div>
+              </section>
 
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Benefits</h3>
-                <p className="text-sm">
-                  Reduced downtime, predictable behaviour, easier maintenance and
-                  faster ramp-up for operators.
+              {/* Siemens */}
+              <section className="border-t pt-8">
+                <h2 className="text-xl md:text-3xl font-semibold mb-4 text-[#151515]">Siemens</h2>
+                <p className="text-base md:text-lg text-[#151515]/80 mb-4 text-justify">
+                  Siemens is a leading automation solution provider for industries. Our team has over 6 years of experience in Siemens products and their applications at both hardware and software levels.
                 </p>
-              </div>
-            </div>
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h3 className="font-semibold mb-3 text-[#151515]">Communication Protocols:</h3>
+                    <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
+                      <li>Profibus</li>
+                      <li>Profinet</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-3 text-[#151515]">Software Skills:</h3>
+                    <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
+                      <li>Simatic Manager</li>
+                      <li>TIA Portal</li>
+                      <li>WinCC</li>
+                      <li>V-Assistant</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
 
-            <div className="mt-8">
-              <p className="text-sm">
-                Contact us to discuss a proof‑of‑concept, code audit or full
-                system delivery. We can work to your standards or provide a
-                turnkey control solution.
-              </p>
+              {/* Mitsubishi */}
+              <section className="border-t pt-8">
+                <h2 className="text-xl md:text-3xl font-semibold mb-4 text-[#151515]">Mitsubishi</h2>
+                <p className="text-base md:text-lg text-[#151515]/80 mb-4 text-justify">
+                  Mitsubishi is a leading automation service provider commonly used by major Japanese manufacturers like Suzuki and Honda. Our services are primarily in software with an experienced team working on Mitsubishi PLC, HMI, and Drives.
+                </p>
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h3 className="font-semibold mb-3">PLC Series:</h3>
+                    <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
+                      <li>MELSEC-Q Series</li>
+                      <li>MELSEC-F Series</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-3">Communication Protocols:</h3>
+                    <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
+                      <li>DeviceNet</li>
+                      <li>CC Link</li>
+                      <li>RS 232</li>
+                      <li>RS 485</li>
+                    </ul>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-3">Software Skills:</h3>
+                  <ul className="list-disc list-inside space-y-2 text-[#151515]/80">
+                    <li>GX Developer</li>
+                    <li>GX Works</li>
+                    <li>GT Designer</li>
+                  </ul>
+                </div>
+              </section>
             </div>
           </div>
-        </main>
-      </div>
+        </div>
       <Footer />
     </>
   );

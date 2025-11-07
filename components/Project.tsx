@@ -21,23 +21,22 @@ export default function Project({ showAll = false, limit = 3 }: Props) {
       </div>
 
       {/* Static card grid (no animations) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-[#151515]">
         {projects.map((p, idx) => (
           <figure
             key={p.src + idx}
-            className="relative overflow-hidden rounded-sm bg-gray-50 shadow-sm border border-gray-200"
-            aria-label={p.title}
+            className="relative overflow-hidden rounded-xs"
+            aria-label={p.role}
           >
             <img
               src={p.src}
-              alt={p.title}
-              className="object-cover w-full h-64 md:h-72 block"
+              alt={p.role}
+              className="object-cover w-full h-74 md:h-64 block"
               loading={idx < 2 ? "eager" : "lazy"}
             />
 
-            <figcaption className="p-4 bg-white">
-              <div className="text-xs uppercase tracking-wide text-gray-500">{p.tag}</div>
-              <div className="mt-2 text-lg font-semibold text-gray-900">{p.title}</div>
+            <figcaption className="p-3 bg-white">
+              <div className="text-xs uppercase tracking-wide text-gray-500">{p.role}</div>
             </figcaption>
           </figure>
         ))}
@@ -46,7 +45,7 @@ export default function Project({ showAll = false, limit = 3 }: Props) {
       {/* View more projects link */}
       {!showAll && (
         <div className="mt-8 text-center">
-          <Link href="/projects" className="inline-block px-6 py-3 bg-[#363636] text-white rounded-md shadow hover:brightness-110 transition">
+          <Link href="/" className="inline-block px-6 py-3 bg-[#222222] text-white rounded-md shadow hover:brightness-110 transition uppercase tracking-wider font-light text-xs">
             View more projects
           </Link>
         </div>

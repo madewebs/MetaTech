@@ -31,7 +31,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const to = 'amarnathsooraj7575@gmail.com';
+    const to = 'metatechautomation@gmail.com';
     const subject = 'Enquiry';
     const bodyLines = [
       `Name: ${formData.name || 'Not provided'}`,
@@ -204,15 +204,15 @@ export default function Contact() {
                 <div className='space-y-4'>
                   <div>
                     <p className='text-sm text-[#d8d8d8]/70 mb-1'>Email</p>
-                    <p className='text-md'>info@automation.com</p>
+                    <p className='text-md'>metatechautomation@gmail.com</p>
                   </div>
                   <div>
                     <p className='text-sm text-[#d8d8d8]/70 mb-1'>Phone</p>
-                    <p className='text-md'>+1 (555) 123-4567</p>
+                    <p className='text-md'>+91 8208619287</p>
                   </div>
                   <div>
                     <p className='text-sm text-[#d8d8d8]/70 mb-1'>Address</p>
-                    <p className='text-md'>123 Automation Street<br />Tech City, TC 12345</p>
+                    <p className='text-md'>Plot No:85,Sr.No.35, Sai Darshan Nagar,Dattwadi<br/>Akurdi, Pune-411035,Maharashtra, India</p>
                   </div>
                 </div>
               </div>

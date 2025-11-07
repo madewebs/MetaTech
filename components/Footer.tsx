@@ -8,20 +8,12 @@ import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Services", href: "/#services" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Contact", href: "/#contact" },
-  ];
 
   const services = [
-    { name: "Industrial Automation", href: "/#" },
-    { name: "Robotics & Cobots", href: "/#" },
-    { name: "PLC Programming", href: "/#" },
-    { name: "SCADA Systems", href: "/#" },
-    { name: "Process Control", href: "/#" },
+    { name: "PLC Expertise", href: "/#" },
+    { name: "Drive Expertise", href: "/#" },
+    { name: "Designing", href: "/#" },
+    { name: "Manufacturing", href: "/#" },
   ];
 
   const socialLinks = [
@@ -116,25 +108,25 @@ export default function Footer() {
                 <li className="flex items-start space-x-3">
                   <MdLocationOn className="text-[#0196c7] mt-1 flex-shrink-0" size={20} />
                   <span className="text-sm leading-relaxed">
-                    123 Automation Street, Industrial Park, City, State 12345
+                    Plot No:85,Sr.No.35, Sai Darshan Nagar,Dattwadi<br/>Akurdi, Pune-411035,Maharashtra, India
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <MdPhone className="text-[#0196c7] flex-shrink-0" size={20} />
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+918208619287"
                     className="text-sm"
                   >
-                    +1 (234) 567-890
+                   +91 8208619287
                   </a>
                 </li>
                 <li className="flex items-center space-x-3">
                   <MdEmail className="text-[#0196c7] flex-shrink-0" size={20} />
                   <a
-                    href="mailto:info@metatechautomation.com"
+                    href="mailto:metatechautomation@gmail.com"
                     className="text-sm"
                   >
-                    info@metatechautomation.com
+                    metatechautomation@gmail.com
                   </a>
                 </li>
               </ul>

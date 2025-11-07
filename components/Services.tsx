@@ -26,43 +26,29 @@ function Services() {
       id: 1, 
       image: "/one.webp",
       title: "PLC Programming",
-      description: "Advanced programmable logic controller solutions for automated systems.",
+      description: "Expert PLC programming across Rockwell, Siemens, and Mitsubishi platforms with IEC 61131-3 standards compliance.",
       href: "/services/plc-programming"
     },
     { 
       id: 2, 
       image: "/two.webp",
-      title: "Robotics Integration",
-      description: "Seamless integration of industrial robots and cobots.",
-      href: "/services/robotics-integration"
+      title: "Drive Expertise",
+      description: "Variable frequency drives and servo systems: parameter tuning, multi-axis motion, fieldbus integration and energy optimisation.",
+      href: "/services/drive"
     },
     { 
       id: 3, 
       image: "/three.webp",
-      title: "SCADA Systems",
-      description: "Supervisory control and data acquisition for real-time monitoring.",
-      href: "/services/scada-systems"
+      title: "Designing",
+      description: "Control panel design, EPLAN design, and comprehensive automation system architecture using industry-standard CAD tools.",
+      href: "/services/designing"
     },
     { 
       id: 4, 
       image: "/one.webp",
-      title: "Drive Systems",
-      description: "Variable frequency drives and motion control solutions.",
-      href: "/services/drive-systems"
-    },
-    { 
-      id: 5, 
-      image: "/two.webp",
-      title: "Control Panels",
-      description: "Custom electrical control panel design and manufacturing.",
-      href: "/services/control-panels"
-    },
-    { 
-      id: 6, 
-      image: "/three.webp",
-      title: "Automation Design",
-      description: "Complete automation system design and implementation.",
-      href: "/services/automation-design"
+      title: "Manufacturing & Installation",
+      description: "Control panel manufacturing, robotics system installation, commissioning, and material supply for complete automation solutions.",
+      href: "/services/manufacturing"
     },
   ];
 
@@ -189,7 +175,6 @@ function Services() {
       handlePrev();
     }
   };
-
 
   return (
     <div className="w-full bg-[#fefefe] text-[#151515] py-16 overflow-hidden">

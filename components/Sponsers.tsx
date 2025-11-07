@@ -21,14 +21,17 @@ export default function Sponsors() {
   });
 
   const clients = [
-    { id: 1, name: "Company 1", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&h=400&fit=crop" },
-    { id: 2, name: "Company 2", logo: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=400&h=400&fit=crop" },
-    { id: 3, name: "Company 3", logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop" },
-    { id: 4, name: "Company 4", logo: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=400&h=400&fit=crop" },
-    { id: 5, name: "Company 5", logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop" },
-    { id: 6, name: "Company 6", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&h=400&fit=crop" },
-    { id: 7, name: "Company 7", logo: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=400&h=400&fit=crop" },
-    { id: 8, name: "Company 8", logo: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=400&h=400&fit=crop" },
+    { id: 1, name: "Company 1", logo: "/ats.webp" },
+    { id: 2, name: "Company 2", logo: "/force.webp" },
+    { id: 3, name: "Company 3", logo: "/ford.webp" },
+    { id: 4, name: "Company 4", logo: "/hitachi.webp" },
+    { id: 5, name: "Company 5", logo: "/hyundai.webp" },
+    { id: 6, name: "Company 6", logo: "/mahi.webp" },
+    { id: 7, name: "Company 7", logo: "/mahiold.webp" },
+    { id: 8, name: "Company 8", logo: "/talkisha.webp" },
+    { id: 9, name: "Company 8", logo: "/webasto.webp" },
+    { id: 10, name: "Company 8", logo: "/wooshin.webp" },
+
   ];
 
   // GSAP Scroll Animations
@@ -127,13 +130,10 @@ export default function Sponsors() {
         </div>
 
         {/* Logos Grid (static display, no GSAP animation) */}
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-6 md:gap-6">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-4 items-center">
           {clients.map((client) => (
-            <div
-              key={client.id}
-              className="group relative flex items-center justify-center cursor-pointer"
-            >
-              <div className="relative w-24 h-24 md:w-32 md:h-32 transition-transform duration-300 group-hover:scale-110">
+            <div key={client.id} className="flex items-center justify-center p-2">
+              <div className="relative w-32 h-20 md:w-36 md:h-24">
                 <Image
                   src={client.logo}
                   alt={client.name}

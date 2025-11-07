@@ -26,15 +26,30 @@ export default function Navbar() {
   } | null>(null);
 
   const navLinks = [
-    { name: "Home", href: "" },
-    { name: "About", href: "/#" },
-    { name: "Service", href: "/#" },
-    { name: "Projects", href: "/#" },
-    { name: "Contact Us", href: "/#" },
+    { name: "Home", id: "home" },
+    { name: "About", id: "about" },
+    { name: "Service", id: "services" },
+    { name: "Projects", id: "projects" },
+    { name: "Contact Us", id: "contact" },
   ];
 
-  const handleLinkClick = () => {
-    setIsOpen(false);
+  // Smooth scroll to section
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      // Close mobile menu first
+      setIsOpen(false);
+      
+      // Use setTimeout to ensure menu closes before scrolling
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    }
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    scrollToSection(sectionId);
   };
 
   useEffect(() => {
@@ -217,9 +232,14 @@ export default function Navbar() {
           <div className="hidden md:block tracking-wider uppercase text-sm">
             <div className="ml-10 flex items-center space-x-12">
               {navLinks.map((link) => (
-                <Link key={link.name} href={link.href} className="font-medium transition-all duration-300">
+                <a 
+                  key={link.name} 
+                  href={`#${link.id}`}
+                  onClick={(e) => handleLinkClick(e, link.id)}
+                  className="font-medium transition-all duration-300 text-white hover:text-[#d8d8d8] cursor-pointer"
+                >
                   {link.name}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -228,7 +248,7 @@ export default function Navbar() {
             <button
               ref={btnRef}
               onClick={() => setIsOpen((s) => !s)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md focus:outline-none leading-none transition-transform duration-200 relative"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md focus:outline-none leading-none transition-transform duration-200 relative text-white"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -250,28 +270,28 @@ export default function Navbar() {
         style={{ display: "none", height: 0, overflow: "hidden" }}
         aria-hidden={!isOpen}
       >
-        <div ref={listRef} className="h-full flex flex-col">
+        <div ref={listRef} className="h-full flex flex-col text-white">
           <div className="px-5 pt-6 pb-3 space-y-1 sm:px-3 overflow-auto">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
-                href={link.href}
-                className="flex items-center justify-between px-3 py-5 font-medium uppercase tracking-wider text-sm transition-all duration-300 border-b"
-                onClick={handleLinkClick}
+                href={`#${link.id}`}
+                onClick={(e) => handleLinkClick(e, link.id)}
+                className="flex items-center justify-between px-3 py-5 font-medium uppercase tracking-wider text-sm transition-all duration-300 border-b border-white/10 hover:bg-white/10 cursor-pointer"
               >
                 <span>{link.name}</span>
                 <span aria-hidden="true" className="ml-2">
                   {">"}
                 </span>
-              </Link>
+              </a>
             ))}
           </div>
 
           <div className="mt-auto px-5 pb-8">
             <div className="text-sm text-[#d8d8d8]/70">Contact</div>
             <div className="mt-3 space-y-2">
-              <a className="block text-sm" href="mailto:info@automation.com">info@automation.com</a>
-              <a className="block text-sm" href="tel:+15551234567">+1 (555) 123-4567</a>
+              <a className="block text-sm hover:text-[#d8d8d8] transition-colors" href="mailto:metatechautomation@gmail.com">metatechautomation@gmail.com</a>
+              <a className="block text-sm hover:text-[#d8d8d8] transition-colors" href="tel:+919876543210">+91 8208619287</a>
             </div>
           </div>
         </div>
