@@ -10,7 +10,7 @@ type Props = {
   limit?: number;
 };
 
-export default function Project({ showAll = false, limit = 3 }: Props) {
+export default function Project({ showAll = false, limit = 4 }: Props) {
   const projects = showAll ? projectCards : projectCards.slice(0, limit);
 
   return (
