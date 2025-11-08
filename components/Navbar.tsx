@@ -290,7 +290,7 @@ export default function Navbar() {
           <div className="mt-auto px-5 pb-8">
             <div className="text-sm text-[#d8d8d8]/70">Contact</div>
             <div className="mt-3 space-y-2">
-              <a className="block text-sm hover:text-[#d8d8d8] transition-colors" href="mailto:info@metatechautomation">info@metatechautomation</a>
+              <a className="block text-sm hover:text-[#d8d8d8] transition-colors" href="mailto:info@metatechautomation.com">info@metatechautomation.com</a>
               <a className="block text-sm hover:text-[#d8d8d8] transition-colors" href="tel:+919876543210">+91 8208619287</a>
             </div>
           </div>

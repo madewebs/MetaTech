@@ -31,7 +31,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const to = 'info@metatechautomation';
+    const to = 'info@metatechautomation.com';
     const subject = 'Enquiry';
     const bodyLines = [
       `Name: ${formData.name || 'Not provided'}`,
@@ -204,7 +204,7 @@ export default function Contact() {
                 <div className='space-y-4'>
                   <div>
                     <p className='text-sm text-[#d8d8d8]/70 mb-1'>Email</p>
-                    <p className='text-md'>info@metatechautomation</p>
+                    <p className='text-md'>info@metatechautomation.com</p>
                   </div>
                   <div>
                     <p className='text-sm text-[#d8d8d8]/70 mb-1'>Phone</p>
@@ -214,10 +214,6 @@ export default function Contact() {
                     <p className='text-sm text-[#d8d8d8]/70 mb-1'>Registered Address</p>
                     <p className='text-md'>Plot No:85,Sr.No.35, Sai Darshan Nagar,Dattwadi<br/>Akurdi, Pune-411035,Maharashtra, India</p>
                   </div>
-                   <div>
-                     <p className='text-sm text-[#d8d8d8]/70 mb-1'>GST IN</p>
-                     <p className='text-md'>27EPGPK4276F1ZO</p>
-                   </div>
                 </div>
               </div>
 
