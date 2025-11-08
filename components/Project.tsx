@@ -12,7 +12,7 @@ export default function Project({ showAll = false, limit = 3 }: Props) {
   const projects = showAll ? projectCards : projectCards.slice(0, limit);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
+    <section className="max-w-7xl mx-auto px-4 py-16">
       <div className="mb-10">
         <h2 className="text-3xl md:text-5xl font-medium mb-4">Projects</h2>
         <p className="text-md md:text-xl mb-8 max-w-3xl">
@@ -21,7 +21,7 @@ export default function Project({ showAll = false, limit = 3 }: Props) {
       </div>
 
       {/* Static card grid (no animations) */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 text-[#151515]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-[#151515]">
         {projects.map((p, idx) => (
           <figure
             key={p.src + idx}

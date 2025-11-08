@@ -21,7 +21,7 @@ export default function Sponsors() {
   });
 
   const clients = [
-    { id: 1, name: "Company 1", logo: "/ats.webp" },
+    { id: 1, name: "Company 1", logo: "/tata.webp" },
     { id: 2, name: "Company 2", logo: "/force.webp" },
     { id: 3, name: "Company 3", logo: "/ford.webp" },
     { id: 4, name: "Company 4", logo: "/hitachi.webp" },
@@ -31,6 +31,8 @@ export default function Sponsors() {
     { id: 8, name: "Company 8", logo: "/talkisha.webp" },
     { id: 9, name: "Company 8", logo: "/webasto.webp" },
     { id: 10, name: "Company 8", logo: "/wooshin.webp" },
+    { id: 11, name: "Company 9", logo: "/kia.webp" },
+
 
   ];
 
@@ -118,7 +120,7 @@ export default function Sponsors() {
 
   return (
     <div ref={containerRef} className="w-full bg-[#151515] text-[#d8d8d8] pt-20 overflow-hidden">
-      <div className='mx-auto max-w-5xl px-6'>
+      <div className='mx-auto max-w-5xl px-4'>
         {/* Header Section */}
         <div className="md:text-center mb-16">
           <h2 ref={headingRef} className="text-4xl md:text-5xl font-medium mb-4">

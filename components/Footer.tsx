@@ -41,7 +41,7 @@ export default function Footer() {
       {/* Content */}
       <div className="relative z-10">
         {/* Main Footer */}
-        <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {/* Company Info */}
             <div className="space-y-4">
@@ -138,10 +138,10 @@ export default function Footer() {
         <div className="border-t-1 text-sm">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-              <p className="text-sm text-justify">
+              <p className="text-xs text-justify">
                 © {currentYear} MetaTech Automation. All rights reserved.
               </p>
-              <div className="flex space-x-4 text-sm">
+              <div className="flex space-x-4 text-xs">
                 <Link
                   href="/#"
                 >

@@ -129,7 +129,7 @@ export default function About() {
 
   return (
     <div className="w-full bg-[#fefefe] text-[#151515] py-12 overflow-hidden" id="about">
-      <div className="mx-auto max-w-7xl px-6 text-justify">
+      <div className="mx-auto max-w-7xl px-4 text-justify">
         {/* Header Section */}
         <div className="mb-12">
           <h2 ref={headingRef} className="text-4xl md:text-5xl font-medium mb-4">
@@ -181,7 +181,7 @@ export default function About() {
               }}
               className="text-base md:text-lg text-[#151515]/80 leading-relaxed"
             >
-              Our highly skilled team brings extensive experience across major automation platforms, including Siemens, Rockwell, Mitsubishi, and others. Though we are currently a focused team of four dedicated professionals, we are driven by a shared passion for innovation, precision, and client satisfaction.
+              Our highly skilled team brings extensive experience across major automation platforms, including Siemens, Rockwell, Mitsubishi, and others. We are driven by a shared passion for innovation, precision, and client satisfaction.
             </p>
 
             <p

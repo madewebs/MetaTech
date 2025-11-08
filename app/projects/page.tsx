@@ -27,7 +27,7 @@ export default function Page() {
           aria-hidden
         />
         <header className="min-h-[50vh] flex items-center">
-          <div className="max-w-5xl mx-auto py-20 px-6 md:px-12" ref={headerRef}>
+          <div className="max-w-5xl mx-auto py-20 px-4 md:px-12" ref={headerRef}>
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-center">Projects</h1>
             <p className="mt-4 text-lg md:text-2xl text-white/90">
               Visual references and recent work imagery.

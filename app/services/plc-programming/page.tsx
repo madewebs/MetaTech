@@ -57,7 +57,7 @@ export default function PLCProgramming() {
           aria-hidden
         />
         <header className="min-h-[60vh] flex items-center">
-          <div className="max-w-5xl mx-auto py-20 px-6 md:px-12" ref={headingRef}>
+          <div className="max-w-5xl mx-auto py-20 px-4 md:px-12" ref={headingRef}>
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-center">
               PLC Programming
             </h1>
@@ -75,7 +75,7 @@ export default function PLCProgramming() {
 
         {/* Content Section */}
         <div className="py-12 bg-[#fefefe]">
-          <div className="mx-auto max-w-5xl px-6">
+          <div className="mx-auto max-w-5xl px-4">
             <div ref={contentRef} className="space-y-12">
               {/* Rockwell */}
               <section>

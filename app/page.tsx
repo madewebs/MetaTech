@@ -182,9 +182,6 @@ export default function Home() {
                       {item.subtext}
                     </p>
                   )}
-                  <button className="border px-8 py-3 text-[12px] mt-3 tracking-normal relative overflow-hidden group">
-                    KNOW MORE
-                  </button>
                 </div>
               </div>
             </div>

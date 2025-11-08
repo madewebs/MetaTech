@@ -48,7 +48,7 @@ export default function Page() {
           aria-hidden
         />
         <header className="min-h-[60vh] flex items-center">
-          <div className="max-w-5xl mx-auto py-20 px-6 md:px-12" ref={headerRef}>
+          <div className="max-w-5xl mx-auto py-20 px-4 md:px-12" ref={headerRef}>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-center">
               Drive Systems
             </h1>
@@ -59,7 +59,7 @@ export default function Page() {
         </header>
 
         <main className="bg-[#efefef] relative z-10 text-[#151515]">
-          <div className="max-w-6xl mx-auto py-20 px-6">
+          <div className="max-w-6xl mx-auto py-20 px-4">
             <h2 className="text-4xl md:text-5xl font-semibold mb-6">
               Drive Systems
             </h2>

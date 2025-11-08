@@ -96,7 +96,7 @@ export default function Contact() {
 
       {/* Content */}
       <div className='relative w-full text-[#d8d8d8] py-20'>
-        <div className='mx-auto max-w-7xl px-6'>
+        <div className='mx-auto max-w-7xl px-4'>
           {/* Header Section */}
           <div className='mb-16'>
             <h2 className='text-4xl md:text-5xl font-medium mb-4'>

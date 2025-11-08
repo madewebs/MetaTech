@@ -12,8 +12,8 @@ export const projectCards = [
     role: "PLC, Bodyshop & Intershop Conveyor Systems",
   },
   {
-    src: "https://source.unsplash.com/1600x900/?factory,conveyor&sig=14",
-    role: "Conveyor System Design",
+    src: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fleanautomation.in%2Froboticwelding.php&psig=AOvVaw1vAMFq0EkRUdSZOxGfS17X&ust=1762668356458000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCdir_x4ZADFQAAAAAdAAAAABAd",
+    role: "PLC, BIW Shop",
   },
   {
     src: "https://source.unsplash.com/1600x900/?industrial,engineering&sig=15",
