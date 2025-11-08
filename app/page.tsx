@@ -107,6 +107,16 @@ export default function Home() {
         }
       });
 
+      // Hide all text initially except current
+      textRefs.current.forEach((textWrap, idx) => {
+        if (textWrap) {
+          const children = Array.from(textWrap.children);
+          if (idx !== curr && children.length) {
+            gsap.set(children, { y: 12, opacity: 0 });
+          }
+        }
+      });
+
       const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
       // Prepare current text
@@ -170,7 +180,7 @@ export default function Home() {
             <div className="relative h-full w-full flex justify-center p-6 md:px-22">
               <div className="w-full md:max-w-screen flex items-center md:px-16">
                 <div
-                  className=""
+                  className={index !== currentImage ? "opacity-0" : ""}
                   ref={(el) => {
                     if (el) textRefs.current[index] = el;
                   }}
