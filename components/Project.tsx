@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 import { projectCards } from "./projectCards";
 
 type Props = {
@@ -32,11 +34,11 @@ export default function Project({ showAll = false, limit = 3 }: Props) {
               src={p.src}
               alt={p.role}
               className="object-cover w-full h-54 md:h-64 block"
-              loading={idx < 2 ? "eager" : "lazy"}
+              loading={idx < 3 ? "eager" : "lazy"}
             />
 
             <figcaption className="p-3 bg-white">
-              <div className="text-xs uppercase tracking-wide text-gray-500">{p.role}</div>
+              <div className="text-sm uppercase tracking-wide text-gray-500">{p.role}</div>
             </figcaption>
           </figure>
         ))}

@@ -123,10 +123,10 @@ export default function Footer() {
                 <li className="flex items-center space-x-3">
                   <MdEmail className="text-[#0196c7] flex-shrink-0" size={20} />
                   <a
-                    href="mailto:metatechautomation@gmail.com"
+                    href="mailto:info@metatechautomation"
                     className="text-sm"
                   >
-                    metatechautomation@gmail.com
+                    info@metatechautomation
                   </a>
                 </li>
               </ul>

@@ -26,11 +26,11 @@ export default function Navbar() {
   } | null>(null);
 
   const navLinks = [
-    { name: "Home", id: "home" },
-    { name: "About", id: "about" },
-    { name: "Service", id: "services" },
-    { name: "Projects", id: "projects" },
-    { name: "Contact Us", id: "contact" },
+    { name: "Home", id: "#home" },
+    { name: "About", id: "#about" },
+    { name: "Service", id: "#services" },
+    { name: "Projects", id: "#projects" },
+    { name: "Contact Us", id: "#contact" },
   ];
 
   // Smooth scroll to section
@@ -234,7 +234,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <a 
                   key={link.name} 
-                  href={`#${link.id}`}
+                  href={link.id}
                   onClick={(e) => handleLinkClick(e, link.id)}
                   className="font-medium transition-all duration-300 text-white hover:text-[#d8d8d8] cursor-pointer"
                 >
@@ -275,7 +275,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                href={`#${link.id}`}
+                href={link.id}
                 onClick={(e) => handleLinkClick(e, link.id)}
                 className="flex items-center justify-between px-3 py-5 font-medium uppercase tracking-wider text-sm transition-all duration-300 border-b border-white/10 hover:bg-white/10 cursor-pointer"
               >
@@ -290,7 +290,7 @@ export default function Navbar() {
           <div className="mt-auto px-5 pb-8">
             <div className="text-sm text-[#d8d8d8]/70">Contact</div>
             <div className="mt-3 space-y-2">
-              <a className="block text-sm hover:text-[#d8d8d8] transition-colors" href="mailto:metatechautomation@gmail.com">metatechautomation@gmail.com</a>
+              <a className="block text-sm hover:text-[#d8d8d8] transition-colors" href="mailto:info@metatechautomation">info@metatechautomation</a>
               <a className="block text-sm hover:text-[#d8d8d8] transition-colors" href="tel:+919876543210">+91 8208619287</a>
             </div>
           </div>
