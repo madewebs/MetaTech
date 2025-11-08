@@ -130,7 +130,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                     <p className='text-sm'><span className='text-[#d8d8d8]/70'>GST IN: </span> >27EPGPK4276F1ZO</p>
+                     <p className='text-sm'><span className='text-[#d8d8d8]/70'>GST IN: </span>27EPGPK4276F1ZO</p>
                 </li>
               </ul>
             </div>
