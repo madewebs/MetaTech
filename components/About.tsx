@@ -113,7 +113,7 @@ export default function About() {
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    const contactSection = document.getElementById("contact");
+    const contactSection = document.getElementById("#contact");
     if (contactSection) {
       // Animate scroll using GSAP
       gsap.to(window, {

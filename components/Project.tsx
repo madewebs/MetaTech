@@ -33,7 +33,7 @@ export default function Project({ showAll = false, limit = 4 }: Props) {
             <img
               src={p.src}
               alt={p.role}
-              className="object-cover w-full h-54 md:h-64 block"
+              className="object-cover w-full h-54 md:h-64 block brightness-70"
               loading={idx < 3 ? "eager" : "lazy"}
             />
 
