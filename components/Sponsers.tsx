@@ -74,7 +74,7 @@ export default function Sponsors() {
         onEnter: () => {
           // Animate clients counter
           gsap.to(counts, {
-            clients: 50,
+            clients: 30,
             duration: 2,
             ease: "power2.out",
             onUpdate: function() {
@@ -84,7 +84,7 @@ export default function Sponsors() {
 
           // Animate projects counter
           gsap.to(counts, {
-            projects: 200,
+            projects: 100,
             duration: 2.5,
             ease: "power2.out",
             onUpdate: function() {
@@ -94,7 +94,7 @@ export default function Sponsors() {
 
           // Animate years counter
           gsap.to(counts, {
-            years: 15,
+            years: 6,
             duration: 2,
             ease: "power2.out",
             onUpdate: function() {
