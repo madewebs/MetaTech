@@ -21,17 +21,17 @@ export default function Sponsors() {
   });
 
   const clients = [
-    { id: 1, name: "Company 1", logo: "/tata.webp" },
-    { id: 2, name: "Company 2", logo: "/force.webp" },
-    { id: 3, name: "Company 3", logo: "/ford.webp" },
-    { id: 4, name: "Company 4", logo: "/hitachi.webp" },
-    { id: 5, name: "Company 5", logo: "/hyundai.webp" },
-    { id: 6, name: "Company 6", logo: "/mahi.webp" },
-    { id: 7, name: "Company 7", logo: "/mahiold.webp" },
-    { id: 8, name: "Company 8", logo: "/talkisha.webp" },
-    { id: 9, name: "Company 8", logo: "/webasto.webp" },
-    { id: 10, name: "Company 8", logo: "/wooshin.webp" },
-    { id: 11, name: "Company 9", logo: "/kia.webp" },
+    { id: 1, name: "Company 1", logo: "assets/tata.webp" },
+    { id: 2, name: "Company 2", logo: "assets/force.webp" },
+    { id: 3, name: "Company 3", logo: "assets/ford.webp" },
+    { id: 4, name: "Company 4", logo: "assets/hitachi.webp" },
+    { id: 5, name: "Company 5", logo: "assets/hyundai.png" },
+    { id: 6, name: "Company 6", logo: "assets/mahi.webp" },
+    { id: 7, name: "Company 7", logo: "assets/mahiold.webp" },
+    { id: 8, name: "Company 8", logo: "assets/talkisha.webp" },
+    { id: 9, name: "Company 8", logo: "assets/webasto.webp" },
+    { id: 10, name: "Company 8", logo: "assets/wooshin.png" },
+    { id: 11, name: "Company 9", logo: "assets/kia.webp" },
 
 
   ];
