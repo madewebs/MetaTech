@@ -1,27 +1,51 @@
 export const projectCards = [
   {
-    src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.2GS1bB8HcYych5D9xb7tWgHaE8%3Fpid%3DApi&f=1&ipt=a99cc244c1479cf0aa9050bbe0a195562b82b8d55af507d8d7ffa0ee8d16c65c&ipo=images",
-    role: "Robotics Welding Line",
+    src: "https://source.unsplash.com/1600x900/?welding,robotics&sig=1",
+    role: "Robotics Welding Line (Magna Cosma)",
   },
   {
-    src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.qFwFcyfasn-DwZ4gynFz2AHaE8%3Fpid%3DApi&f=1&ipt=521ded9ec574ecf2225cbc234031d74561b0e714b064655dac1a646b7af552b3&ipo=images",
-    role: "Bodyshop & Assembly Shop",
+    src: "https://source.unsplash.com/1600x900/?assembly,automotive&sig=2",
+    role: "Bodyshop & Assembly Shop (General Motors)",
   },
   {
-    src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.-b2v-EkVtWx7P3XX-cQ4uAHaG0%3Fpid%3DApi&f=1&ipt=eb7c0d7eb98a4f56df3eeed1437af97ec63ac2e9c72991ebd5a9c8e33e94e7c7&ipo=images",
-    role: "Intershop Conveyor Systems",
+    src: "https://source.unsplash.com/1600x900/?conveyor,automation&sig=3",
+    role: "Bodyshop & Intershop Conveyor Systems (Tata Motors)",
   },
   {
-    src: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fleanautomation.in%2Froboticwelding.php&psig=AOvVaw1vAMFq0EkRUdSZOxGfS17X&ust=1762668356458000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCdir_x4ZADFQAAAAAdAAAAABAd",
-    role: "PLC, BIW Shop",
+    src: "https://source.unsplash.com/1600x900/?biw,robotics&sig=4",
+    role: "BIW Shop – Tailgate & Hood (Ford Argentina / Ford Sanand)",
   },
   {
-    src: "https://source.unsplash.com/1600x900/?industrial,engineering&sig=15",
-    role: "Process Optimization",
+    src: "https://source.unsplash.com/1600x900/?press,manufacturing&sig=5",
+    role: "Press Shop Automation (Reliable Autech)",
   },
   {
-    src: "https://source.unsplash.com/1600x900/?automation,robot&sig=16",
-    role: "Cobot Integration",
+    src: "https://source.unsplash.com/1600x900/?robot,assembly&sig=6",
+    role: "Roof Assembly – MES & LabVIEW Integration (Webasto)",
+  },
+  {
+    src: "https://source.unsplash.com/1600x900/?automation,servo&sig=7",
+    role: "Axle Conveyor, AGV & RGV Automation (Mahindra & Mahindra)",
+  },
+  {
+    src: "https://source.unsplash.com/1600x900/?battery,manufacturing&sig=8",
+    role: "Primer Station Automation (Mahindra Rise – Battery Plant)",
+  },
+  {
+    src: "https://source.unsplash.com/1600x900/?tire,assembly&sig=9",
+    role: "Tire Assembly Line Automation (Hyundai Motors)",
+  },
+  {
+    src: "https://source.unsplash.com/1600x900/?rgv,automation&sig=10",
+    role: "RGV Automation (Tata Motors)",
+  },
+  {
+    src: "https://source.unsplash.com/1600x900/?ejector,robotics&sig=11",
+    role: "New Model Addition & Ejector Installation (KIA Motors)",
+  },
+  {
+    src: "https://source.unsplash.com/1600x900/?paintshop,industry&sig=12",
+    role: "Paint Shop Upgradation (Tata Hitachi)",
   },
 ];
 
