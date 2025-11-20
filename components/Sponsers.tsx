@@ -166,7 +166,7 @@ export default function Sponsors() {
           </div>
           <div className="text-center">
             <h3 className="text-4xl md:text-5xl font-bold text-[#0196c7] mb-2">
-              {counts.years}+
+              0{counts.years}+
             </h3>
             <p className="text-sm md:text-base">Years Experience</p>
           </div>

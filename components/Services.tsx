@@ -24,21 +24,21 @@ function Services() {
   const services = [
     { 
       id: 1, 
-      image: "/one.webp",
+      image: "/plc.png",
       title: "PLC Programming",
       description: "Expert PLC programming across Rockwell, Siemens, and Mitsubishi platforms with IEC 61131-3 standards compliance.",
       href: "/services/plc-programming"
     },
     { 
       id: 2, 
-      image: "/two.webp",
+      image: "/three.webp",
       title: "Drive Expertise",
       description: "Variable frequency drives and servo systems: parameter tuning, multi-axis motion, fieldbus integration and energy optimisation.",
       href: "/services/drive"
     },
     { 
       id: 3, 
-      image: "/three.webp",
+      image: "/design.png",
       title: "Designing",
       description: "Control panel design, EPLAN design, and comprehensive automation system architecture using industry-standard CAD tools.",
       href: "/services/designing"

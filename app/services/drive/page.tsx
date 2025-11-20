@@ -63,7 +63,7 @@ export default function Page() {
             <h2 className="text-4xl md:text-5xl font-semibold mb-6">
               Drive Systems
             </h2>
-            <div className="md:text-xl text-md text-[#151515]/90 text-justify">
+            <div className="md:text-xl text-md text-[#151515]/90 text-left">
               <p className="mb-4 leading-relaxed">
                 Design and implement variable frequency drive (VFD) and servo motor
                 systems for precise motion control.
@@ -74,27 +74,10 @@ export default function Page() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4 mt-6">
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Vendors</h3>
-                <p className="text-sm">
-                  Siemens, ABB, Schneider, Yaskawa and more.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Services</h3>
-                <p className="text-sm">
-                  Commissioning, tuning and networked drives integration.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Benefits</h3>
-                <p className="text-sm">
-                  Improved efficiency, smoother operation and extended equipment life.
-                </p>
-              </div>
+            <div className="space-y-4 mt-6">
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Vendors:</span> Siemens, ABB, Schneider, Yaskawa and more.</p>
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Services:</span> Commissioning, tuning and networked drives integration.</p>
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Benefits:</span> Improved efficiency, smoother operation and extended equipment life.</p>
             </div>
           </div>
         </main>

@@ -38,7 +38,7 @@ export default function Project({ showAll = false, limit = 4 }: Props) {
             />
 
             <figcaption className="p-3 bg-white">
-              <div className="text-sm uppercase tracking-wide text-gray-500">{p.role}</div>
+              <div className="text-sm font-medium uppercase tracking-wide text-black/80">{p.role}</div>
             </figcaption>
           </figure>
         ))}

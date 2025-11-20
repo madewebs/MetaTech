@@ -63,7 +63,7 @@ export default function Page() {
             <h2 className="text-4xl md:text-5xl font-semibold mb-6">
               Control Panels
             </h2>
-            <div className="md:text-xl text-md text-[#151515]/90 text-justify">
+            <div className="md:text-xl text-md text-[#151515]/90 text-left">
               <p className="mb-4 leading-relaxed">
                 Design and manufacture electrical control panels, from compact
                 machine control units to MCCs.
@@ -74,25 +74,10 @@ export default function Page() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4 mt-6">
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Build</h3>
-                <p className="text-sm">
-                  Industrial enclosures, wiring and cable management.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Docs</h3>
-                <p className="text-sm">Wiring diagrams, BOMs and test certificates.</p>
-              </div>
-
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Support</h3>
-                <p className="text-sm">
-                  On-site installation and commissioning support.
-                </p>
-              </div>
+            <div className="space-y-4 mt-6">
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Build:</span> Industrial enclosures, wiring and cable management.</p>
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Docs:</span> Wiring diagrams, BOMs and test certificates.</p>
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Support:</span> On-site installation and commissioning support.</p>
             </div>
           </div>
         </main>

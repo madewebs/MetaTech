@@ -129,7 +129,7 @@ export default function About() {
 
   return (
     <div className="w-full bg-[#fefefe] text-[#151515] py-12 overflow-hidden" id="about">
-      <div className="mx-auto max-w-7xl px-4 text-justify">
+      <div className="mx-auto max-w-7xl px-4 text-left">
         {/* Header Section */}
         <div className="mb-12">
           <h2 ref={headingRef} className="text-4xl md:text-5xl font-medium mb-4">

@@ -64,7 +64,7 @@ export default function Page() {
             <h2 className="text-4xl md:text-5xl font-semibold mb-6">
               Automation Design
             </h2>
-            <div className="md:text-xl text-md text-[#151515]/90 text-justify">
+            <div className="md:text-xl text-md text-[#151515]/90 text-left">
               <p className="mb-4 leading-relaxed">
                 System architecture, control strategies, I/O mapping and full
                 project documentation for turnkey automation projects.
@@ -75,27 +75,10 @@ export default function Page() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4 mt-6">
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Scope</h3>
-                <p className="text-sm">
-                  Feasibility, specification and control design.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Delivery</h3>
-                <p className="text-sm">
-                  Code, HMI, wiring, FAT and commissioning support.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-md bg-white shadow">
-                <h3 className="font-semibold mb-2">Standards</h3>
-                <p className="text-sm">
-                  IEC/ANSI safety and control best practices.
-                </p>
-              </div>
+            <div className="space-y-4 mt-6">
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Scope:</span> Feasibility, specification and control design.</p>
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Delivery:</span> Code, HMI, wiring, FAT and commissioning support.</p>
+              <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">Standards:</span> IEC/ANSI safety and control best practices.</p>
             </div>
           </div>
         </main>
