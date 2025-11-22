@@ -240,20 +240,20 @@ export default function Home() {
           })}
         </div>
       </div>
-      <section id="#about">
+      <section id="about">
           <About />
         </section>
 
-        <section id="#services">
+        <section id="services">
           <Services />
         </section>
 
-        <section id="#projects">
+        <section id="projects">
           <Project showAll={false} limit={3} />
           <Sponsers />
         </section>
 
-        <section id="#contact">
+        <section id="contact">
           <Contact />
         </section>
         <Footer />

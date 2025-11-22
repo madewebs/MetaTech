@@ -26,11 +26,11 @@ export default function Navbar() {
   } | null>(null);
 
   const navLinks = [
-    { name: "Home", id: "#home" },
-    { name: "About", id: "#about" },
-    { name: "Service", id: "#services" },
-    { name: "Projects", id: "#projects" },
-    { name: "Contact Us", id: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Service", href: "/#services" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Contact Us", href: "/#contact" },
   ];
 
   // Smooth scroll to section
@@ -47,9 +47,20 @@ export default function Navbar() {
     }
   };
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault();
-    scrollToSection(sectionId);
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If link has a hash, prevent default and handle navigation
+    if (href.includes("#")) {
+      e.preventDefault();
+      const [path, sectionId] = href.split("#");
+      
+      // If we're on the home page, just scroll
+      if (window.location.pathname === "/" || window.location.pathname === "") {
+        scrollToSection(sectionId);
+      } else {
+        // If on a different page, navigate to home and then scroll
+        window.location.href = href;
+      }
+    }
   };
 
   useEffect(() => {
@@ -231,15 +242,16 @@ export default function Navbar() {
 
           <div className="hidden md:block tracking-wider uppercase text-sm">
             <div className="ml-10 flex items-center space-x-12">
+              {/* For desktop navigation */}
               {navLinks.map((link) => (
-                <a 
+                <Link
                   key={link.name} 
-                  href={link.id}
-                  onClick={(e) => handleLinkClick(e, link.id)}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
                   className="font-medium transition-all duration-300 text-white hover:text-[#d8d8d8] cursor-pointer"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -272,18 +284,19 @@ export default function Navbar() {
       >
         <div ref={listRef} className="h-full flex flex-col text-white">
           <div className="px-5 pt-6 pb-3 space-y-1 sm:px-3 overflow-auto">
+            {/* For mobile navigation */}
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.id}
-                onClick={(e) => handleLinkClick(e, link.id)}
+                href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className="flex items-center justify-between px-3 py-5 font-medium uppercase tracking-wider text-sm transition-all duration-300 border-b border-white/10 hover:bg-white/10 cursor-pointer"
               >
                 <span>{link.name}</span>
                 <span aria-hidden="true" className="ml-2">
                   {">"}
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
 

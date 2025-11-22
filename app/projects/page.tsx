@@ -35,7 +35,7 @@ export default function Page() {
           </div>
         </header>
 
-        <main className="bg-[#efefef] relative z-10 text-[#151515]">
+        <main className="bg-[#ffffff] relative z-10 text-[#151515]">
           {/* show all cards on projects page */}
           <Project showAll />
         </main>
