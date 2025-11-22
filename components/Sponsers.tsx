@@ -84,7 +84,7 @@ export default function Sponsors() {
 
           // Animate projects counter
           gsap.to(counts, {
-            projects: 100,
+            projects: 50,
             duration: 2.5,
             ease: "power2.out",
             onUpdate: function() {

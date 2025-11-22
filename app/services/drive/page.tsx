@@ -83,7 +83,7 @@ export default function Page() {
             <div className="mt-12 space-y-6">
               <h3 className="text-2xl md:text-3xl font-semibold text-[#151515]">VFD Technology</h3>
               <p className="text-base md:text-lg text-[#151515]/80 leading-relaxed">
-                Variable Frequency Drives are essential components in modern industrial automation, enabling precise control of electric motor speeds and torque. Our expertise covers a wide range of VFD applications from simple fan and pump speed control to complex multi-motor synchronization. We specialize in selecting the right drive technology for your specific application, whether it`&apos`s AC induction motors, permanent magnet motors, or synchronous motors.
+                Variable Frequency Drives are essential components in modern industrial automation, enabling precise control of electric motor speeds and torque. Our expertise covers a wide range of VFD applications from simple fan and pump speed control to complex multi-motor synchronization. We specialize in selecting the right drive technology for your specific application, whether it&apos;s AC induction motors, permanent magnet motors, or synchronous motors.
               </p>
               <p className="text-base md:text-lg text-[#151515]/80 leading-relaxed">
                 Our team understands the critical parameters that affect VFD performance including voltage drop compensation, acceleration ramps, deceleration profiles, and thermal management. We configure drives to match your mechanical load characteristics, ensuring optimal energy efficiency and reduced mechanical stress on equipment. This results in lower operating costs and extended motor lifespan.
