@@ -208,7 +208,7 @@ export default function About() {
             <div className="pt-4">
               <div ref={buttonRef}>
                 <a
-                  href="#contact"
+                  href="contact"
                   onClick={handleContactClick}
                   className="bg-[#151515] text-[#d8d8d8] px-8 py-3 rounded-sm hover:bg-[#303030] transition-colors duration-300 uppercase tracking-wider text-sm font-medium inline-block cursor-pointer"
                 >
