@@ -4,35 +4,31 @@ export const projectCards = [
     role: "Robotics Welding Line",
   },
   {
-    src: "/projects/Assembly.png",
+    src: "/projects/Assembly.webp",
     role: "Bodyshop & Assembly Shop",
   },
   {
-    src: "/projects/Axle.png",
-    role: "Axle Conveyor, AGV & RGV Automation",
-  },
-  {
-    src: "/projects/BIW.png",
+    src: "/projects/BIW.webp",
     role: "BIW Shop – Tailgate & Hood",
   },
   {
-    src: "/projects/Press.png",
+    src: "/projects/Press.webp",
     role: "Press Shop Automation",
   },
   {
-    src: "/projects/Inter.png",
+    src: "/projects/Inter.webp",
     role: "Bodyshop & Intershop Conveyor",
   },
   {
-    src: "/projects/Roof.png",
+    src: "/projects/Roof.webp",
     role: "Roof Assembly – MES & LabVIEW Integration",
   },
   {
-    src: "/projects/Axle.png",
+    src: "/projects/Axle.webp",
     role: "Axle Conveyor, AGV & RGV Automation",
   },
   {
-    src: "/projects/Primer.png",
+    src: "/projects/Primer.webp",
     role: "Primer Station Automation",
   },
   {
@@ -40,15 +36,15 @@ export const projectCards = [
     role: "Tire Assembly Line Automation",
   },
   {
-    src: "/projects/RGV.png",
+    src: "/projects/RGV.webp",
     role: "RGV Automation",
   },
   {
-    src: "/projects/NewModel.png",
+    src: "/projects/NewModel.webp",
     role: "New Model Addition & Ejector Installation",
   },
   {
-    src: "/projects/PaintShop.png",
+    src: "/projects/PaintShop.webp",
     role: "Paint Shop Upgradation",
   },
 ];

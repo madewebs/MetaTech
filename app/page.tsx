@@ -24,14 +24,24 @@ export default function Home() {
 
   const images = [
     {
-      src: "one.webp",
+      src: "image1.webp",
       text: "Automated Production Lines.",
       subtext: "End-to-end controls for precision, safety, and uptime. Seamless integration of machinery with real-time monitoring to maximize efficiency.",
     },
     {
-      src: "three.webp",
+      src: "image2.webp",
       text: "Cobots and Robotics.",
       subtext: "Collaborative robots integrated with vision and safety. Advanced cobots work alongside humans with AI-driven vision and safety protocols.",
+    },
+    {
+      src: "image3.webp",
+      text: "Quality Assurance Systems.",
+      subtext: "Intelligent inspection and testing solutions. Real-time defect detection using AI-powered vision systems for consistent quality.",
+    },
+    {
+      src: "image4.webp",
+      text: "Supply Chain Automation.",
+      subtext: "Smart warehousing and logistics integration. Automated inventory management with predictive analytics for optimal supply chain efficiency.",
     },
   ];
 
