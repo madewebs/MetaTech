@@ -172,7 +172,7 @@ export default function About() {
               }}
               className="text-base md:text-lg text-[#151515]/80 leading-relaxed"
             >
-              Metatech Automation was founded by engineers with over 10 years of industry experience, making us a dream organization built by automation professionals for automation excellence. As the demand for automation continues to rise across industries, we are committed to providing best-in-class, customized automation solutions tailored to meet the unique needs of our clients.
+              Metatech Automation, making us a dream organization built by automation professionals for automation excellence. As the demand for automation continues to rise across industries, we are committed to providing best-in-class, customized automation solutions tailored to meet the unique needs of our clients.
             </p>
 
             <p
