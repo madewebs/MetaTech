@@ -17,7 +17,7 @@ export const projectCards = [
   },
   {
     src: "/projects/Inter.webp",
-    role: "Bodyshop & Intershop Conveyor",
+    role: "Intershop Conveyor",
   },
   {
     src: "/projects/Roof.webp",
@@ -41,7 +41,7 @@ export const projectCards = [
   },
   {
     src: "/projects/NewModel.webp",
-    role: "New Model Addition & Ejector Installation",
+    role: "Ejector Installation",
   },
   {
     src: "/projects/PaintShop.webp",
