@@ -105,7 +105,7 @@ export default function PLCProgramming() {
                 <h2 className="text-3xl md:text-4xl font-semibold mb-3 text-[#151515]">Siemens</h2>
                 <p className="text-sm md:text-base text-[#151515]/60 mb-4 italic">Comprehensive automation solutions with modular architecture</p>
                 <p className="text-base md:text-lg text-[#151515]/80 mb-3 text-left">
-                  Siemens is a leading automation solution provider for industries globally. Our team has over 6 years of experience in Siemens products and their applications at both hardware and software levels, delivering solutions that meet the highest standards of industrial automation.
+                  Siemens is a leading automation solution provider for industries globally. Our team has years of experience in Siemens products and their applications at both hardware and software levels, delivering solutions that meet the highest standards of industrial automation.
                 </p>
                 <div className="space-y-2 mb-3">
                   <p className="text-base md:text-lg text-[#151515]/80"><span className="font-semibold text-[#151515]">PLC Series:</span> S7-1200, S7-1500, S7-300, S7-400.</p>

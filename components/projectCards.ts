@@ -9,7 +9,7 @@ export const projectCards = [
   },
   {
     src: "/projects/BIW.webp",
-    role: "BIW Shop – Tailgate & Hood",
+    role: "BIW Shop Tailgate & Hood",
   },
   {
     src: "/projects/Press.webp",
@@ -21,7 +21,7 @@ export const projectCards = [
   },
   {
     src: "/projects/Roof.webp",
-    role: "Roof Assembly – MES & LabVIEW Integration",
+    role: "Roof Assembly MES & LabVIEW Integration",
   },
   {
     src: "/projects/Axle.webp",
