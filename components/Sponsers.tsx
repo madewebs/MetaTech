@@ -92,16 +92,6 @@ export default function Sponsors() {
             }
           });
 
-          // Animate years counter
-          gsap.to(counts, {
-            years: 6,
-            duration: 2,
-            ease: "power2.out",
-            onUpdate: function() {
-              setCounts(prev => ({ ...prev, years: Math.floor(this.targets()[0].years) }));
-            }
-          });
-
           // Animate satisfaction counter
           gsap.to(counts, {
             satisfaction: 98,
@@ -151,7 +141,7 @@ export default function Sponsors() {
       </div>
       {/* Stats Section */}
       <div ref={statsRef} className="bg-[#fefefe] text-[#151515] py-16 mt-20">
-        <div className="mx-auto max-w-7xl px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="mx-auto max-w-7xl flex items-center justify-around px-6">
           <div className="text-center">
             <h3 className="text-4xl md:text-5xl font-bold text-[#0196c7] mb-2">
               {counts.clients}+
@@ -163,12 +153,6 @@ export default function Sponsors() {
               {counts.projects}+
             </h3>
             <p className="text-sm md:text-base">Projects Completed</p>
-          </div>
-          <div className="text-center">
-            <h3 className="text-4xl md:text-5xl font-bold text-[#0196c7] mb-2">
-              0{counts.years}+
-            </h3>
-            <p className="text-sm md:text-base">Years Experience</p>
           </div>
           <div className="text-center">
             <h3 className="text-4xl md:text-5xl font-bold text-[#0196c7] mb-2">

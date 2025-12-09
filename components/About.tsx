@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -113,7 +114,7 @@ export default function About() {
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    const contactSection = document.getElementById("#contact");
+    const contactSection = document.getElementById("contact");
     if (contactSection) {
       // Animate scroll using GSAP
       gsap.to(window, {
@@ -207,13 +208,13 @@ export default function About() {
 
             <div className="pt-4">
               <div ref={buttonRef}>
-                <a
+                <Link
                   href="#contact"
                   onClick={handleContactClick}
                   className="bg-[#151515] text-[#d8d8d8] px-8 py-3 rounded-sm hover:bg-[#303030] transition-colors duration-300 uppercase tracking-wider text-sm font-medium inline-block cursor-pointer"
                 >
                   GET IN TOUCH
-                </a>
+                </Link>
               </div>
             </div>
           </div>
